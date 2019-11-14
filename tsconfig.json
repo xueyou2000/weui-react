@@ -20,7 +20,9 @@
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
         "paths": {
-            "@/*": ["components/*"]
+            "@/*": ["components/*"],
+            "site/*": ["site/*"],
+            "weui-react": ["components/index"]
         }
     },
     "exclude": ["node_modules", "es"]

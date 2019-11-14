@@ -1,0 +1,14 @@
+.page-center-wrap {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .we-loading {
+        width: 60px;
+        height: 60px;
+    }
+}

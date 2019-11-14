@@ -19,7 +19,7 @@ const extensions = [".js", ".jsx", ".ts", ".tsx", ".scss"];
 export default {
     input: "components/index.ts",
     output: {
-        file: "dist/weui-react.js",
+        file: "dest/weui-react.js",
         format: "umd",
         name: "WeuiReact",
         sourcemap: true,
@@ -30,10 +30,10 @@ export default {
     external: ["react"],
     plugins: [
         clear({
-            targets: ["dist"],
+            targets: ["dest"],
         }),
         scss({
-            output: "dist/weui-react.css",
+            output: "dest/weui-react.css",
             outputStyle: "compressed",
             sourceMap: true,
         }),
@@ -45,17 +45,6 @@ export default {
             include: "node_modules/**",
         }),
         typescript(),
-        copy({
-            targets: [
-                {
-                    src: "components/**/*.scss",
-                    dest: "es",
-                },
-            ],
-            verbose: true,
-            expandDirectories: true,
-            markDirectories: true,
-        }),
         uglify(),
         progress({ clearLine: true }),
     ],

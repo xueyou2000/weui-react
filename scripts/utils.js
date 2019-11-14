@@ -1,5 +1,6 @@
 const path = require("path");
 const fs = require("fs");
+const os = require("os");
 const spawn = require("cross-spawn");
 
 /**
@@ -39,4 +40,22 @@ function spawnPromise(command, args, options) {
     });
 }
 
-module.exports = { mkdirs, spawn: spawnPromise };
+/**
+ * 获取内网ip
+ */
+function findHost() {
+    var ifaces = os.networkInterfaces();
+    var host = null;
+
+    for (var dev in ifaces) {
+        ifaces[dev].forEach(function(details, alias) {
+            if (details.family == "IPv4" && details.address.indexOf("192") !== -1) {
+                host = details.address;
+            }
+        });
+    }
+
+    return host;
+}
+
+module.exports = { mkdirs, spawn: spawnPromise, findHost };
