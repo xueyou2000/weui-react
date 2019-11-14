@@ -45,7 +45,7 @@ export const BaseRouterConfig: RouteConfig[] = [
     {
         title: "Loadmore 加载更多",
         path: "/loadmore",
-        component: null,
+        component: loadComponent(() => import("site/pages/Basic/Loadmore")),
         exact: true,
     },
     {

@@ -1,4 +1,7 @@
 import "./Styles";
+export * from "./Loading";
+export * from "./List";
+export * from "./Grid";
 
 import Icon from "./Icon";
 export { Icon };
@@ -9,7 +12,5 @@ export { Loading };
 import Button from "./Button";
 export { Button };
 
-export * from "./Loading";
-export * from "./List";
-
-export * from "./Grid";
+import Loadmore from "./Loadmore";
+export { Loadmore };
