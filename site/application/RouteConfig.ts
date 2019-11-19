@@ -60,6 +60,12 @@ export const BaseRouterConfig: RouteConfig[] = [
         component: loadComponent(() => import("site/pages/Basic/Preview")),
         exact: true,
     },
+    {
+        title: "Badge 徽章",
+        path: "/badge",
+        component: loadComponent(() => import("site/pages/Basic/Badge")),
+        exact: true,
+    },
 ];
 
 /**

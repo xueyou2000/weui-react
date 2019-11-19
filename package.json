@@ -35,9 +35,13 @@
     ],
     "dependencies": {
         "classnames": "^2.2.6",
-        "xy-badge": "^0.0.4"
+        "utils-hooks": "^0.0.75",
+        "xy-badge": "^0.1.0"
     },
     "devDependencies": {
+        "@fortawesome/fontawesome-svg-core": "^1.2.25",
+        "@fortawesome/free-solid-svg-icons": "^5.11.2",
+        "@fortawesome/react-fontawesome": "^0.1.7",
         "@loadable/component": "^5.10.3",
         "@testing-library/react": "^9.3.2",
         "@types/classnames": "^2.2.9",
@@ -64,8 +68,8 @@
         "optimize-css-assets-webpack-plugin": "^5.0.3",
         "ora": "^4.0.2",
         "prettier": "^1.19.1",
-        "react": "^16.11.0",
-        "react-dom": "^16.11.0",
+        "react": "^16.9.0",
+        "react-dom": "^16.9.0",
         "react-router-config": "^5.1.1",
         "react-router-dom": "^5.1.2",
         "rimraf": "^3.0.0",
