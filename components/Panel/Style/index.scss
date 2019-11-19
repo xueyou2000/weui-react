@@ -1,0 +1,65 @@
+$Pabel: "weui-panel";
+
+.#{$Pabel} {
+    background-color: #ffffff;
+    margin-top: 10px;
+    position: relative;
+    overflow: hidden;
+
+    &:first-child {
+        margin-top: 0;
+    }
+
+    &:before {
+        content: " ";
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        height: 1px;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        color: rgba(0, 0, 0, 0.1);
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        -webkit-transform: scaleY(0.5);
+        transform: scaleY(0.5);
+    }
+
+    &:after {
+        content: " ";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        height: 1px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        color: rgba(0, 0, 0, 0.1);
+        -webkit-transform-origin: 0 100%;
+        transform-origin: 0 100%;
+        -webkit-transform: scaleY(0.5);
+        transform: scaleY(0.5);
+    }
+}
+.#{$Pabel}__hd {
+    padding: 16px 16px 13px;
+    color: rgba(0, 0, 0, 0.9);
+    font-size: 15px;
+    font-weight: 700;
+    position: relative;
+
+    &:after {
+        content: " ";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        height: 1px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        color: rgba(0, 0, 0, 0.1);
+        -webkit-transform-origin: 0 100%;
+        transform-origin: 0 100%;
+        -webkit-transform: scaleY(0.5);
+        transform: scaleY(0.5);
+        left: 15px;
+    }
+}

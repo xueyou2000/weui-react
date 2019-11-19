@@ -34,14 +34,12 @@ const MenuConfig: MenuItemConfig[] = [
 ];
 
 function Home({ history }: RouteComponentProps) {
-    const [active, setActive] = useState(null);
+    const [active, setActive] = useState(localStorage.getItem("tabIndex"));
 
     function changeActive(val: string) {
-        if (active === val) {
-            setActive(null);
-        } else {
-            setActive(val);
-        }
+        const _val = active === val ? null : val;
+        localStorage.setItem("tabIndex", _val);
+        setActive(_val);
     }
 
     return (

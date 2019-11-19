@@ -51,7 +51,13 @@ export const BaseRouterConfig: RouteConfig[] = [
     {
         title: "Panel 面板",
         path: "/panel",
-        component: null,
+        component: loadComponent(() => import("site/pages/Basic/Panel")),
+        exact: true,
+    },
+    {
+        title: "Pewview 表单预览",
+        path: "/preview",
+        component: loadComponent(() => import("site/pages/Basic/Preview")),
         exact: true,
     },
 ];
