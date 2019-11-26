@@ -75,7 +75,7 @@ export const FeedbackRouterConfig: RouteConfig[] = [
     {
         title: "Actionsheet 弹出式菜单",
         path: "/actionsheet",
-        component: null,
+        component: loadComponent(() => import("site/pages/FeedBack/Actionsheet")),
         exact: true,
     },
     {

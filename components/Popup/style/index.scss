@@ -1,17 +1,18 @@
 $Popup: "weui-popup";
 
 .#{$Popup} {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    z-index: 1000;
-    top: 0;
-    left: 0;
+    // position: fixed;
+    // width: 100%;
+    // height: 100%;
+    // overflow: hidden;
+    // z-index: 1000;
+    // top: 0;
+    // left: 0;
 
     &.#{$Popup}-open {
-        display: block;
+        // display: block;
         .#{$Popup}-mask {
+            display: block;
             animation: fadeIn ease 0.3s forwards;
         }
     }
@@ -29,8 +30,9 @@ $Popup: "weui-popup";
     left: 0;
     bottom: 0;
     background: rgba(0, 0, 0, 0.6);
-    user-select: none;
-    -webkit-user-select: none;
+    // user-select: none;
+    // -webkit-user-select: none;
+    -webkit-overflow-scrolling: touch;
     animation: fadeOut ease 0.3s forwards;
     &.hidden-mask {
         background: none;
@@ -68,5 +70,41 @@ $Popup: "weui-popup";
     }
     100% {
         opacity: 0;
+    }
+}
+
+/**底部拉出动画 **/
+.drill {
+    display: block;
+    animation: drillOut ease 0.3s forwards;
+
+    &.drill-open {
+        display: block;
+        animation: drillIn ease 0.3s forwards;
+    }
+    &.drill-state-unmounted {
+        display: none;
+    }
+}
+@keyframes drillIn {
+    0% {
+        display: block;
+        opacity: 0;
+        transform: translate(0, 100%);
+    }
+    100% {
+        display: block;
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+}
+@keyframes drillOut {
+    0% {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(0, 100%);
     }
 }

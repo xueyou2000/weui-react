@@ -6,6 +6,7 @@ export * from "./Mediabox";
 export * from "./Preview";
 export * from "./Popup";
 export * from "./Dialog";
+export * from "./Actionsheet";
 
 import Icon from "./Icon";
 export { Icon };

@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import React, { useEffect, useRef } from "react";
 import { EXITED, useControll, useMount, useTranstion, ENTERED, GetDrawerContainerFuc, usePortal } from "utils-hooks";
-import "./index.scss";
+import "./style";
 
 export interface PopupProps {
     /**
@@ -17,9 +17,9 @@ export interface PopupProps {
      */
     popupClassName?: string;
     /**
-     * 弹出样式
+     * 弹出框内容元素类名
      */
-    popupStyle?: React.CSSProperties;
+    popupContentCLassName?: string;
     /**
      * 持续时间（毫秒）
      * @description 默认 3000 毫秒后关闭
@@ -32,7 +32,7 @@ export interface PopupProps {
     /**
      * 内容
      */
-    children: React.ReactNode;
+    children?: React.ReactNode;
     /**
      * 是否显示遮罩层
      */
@@ -65,7 +65,7 @@ export interface PopupProps {
 }
 
 function Popup(props: PopupProps) {
-    const { prefixCls = "weui-popup", animateClassName = "fade", popupClassName, popupStyle, duration, onUnmount, children, onVisibleChange, getCloseFunc, mask = true, maskClose = true, getContainer } = props;
+    const { prefixCls = "weui-popup", animateClassName = "fade", popupClassName, popupContentCLassName, duration, onUnmount, children, onVisibleChange, getCloseFunc, mask = true, maskClose = true, getContainer } = props;
     const [visible, setVisible, isControll] = useControll(props, "visible", "defaultVisible");
     const [ref, state] = useTranstion(visible);
     const opening = state.indexOf("en") !== -1;
@@ -114,14 +114,18 @@ function Popup(props: PopupProps) {
         });
     }
 
-    return renderPortal(
-        <div className={classNames(prefixCls, popupClassName, `${prefixCls}-state-${state}`, { [`${prefixCls}-open`]: opening })}>
-            <div className={classNames(`${prefixCls}-mask`, { "hidden-mask": !mask })} onClick={closeByMask}></div>
-            <div className={classNames(`${prefixCls}-content`, animateclassString)} ref={ref}>
-                {children}
+    function content() {
+        return (
+            <div className={classNames(prefixCls, popupClassName, `${prefixCls}-state-${state}`, { [`${prefixCls}-open`]: opening })}>
+                <div className={classNames(`${prefixCls}-mask`, { "hidden-mask": !mask })} onClick={closeByMask}></div>
+                <div className={classNames(`${prefixCls}-content`, popupContentCLassName, animateclassString)} ref={ref}>
+                    {children}
+                </div>
             </div>
-        </div>,
-    );
+        );
+    }
+
+    return renderPortal(content());
 }
 
 export default React.memo(Popup);

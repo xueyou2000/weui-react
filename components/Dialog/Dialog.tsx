@@ -1,8 +1,8 @@
 import classNames from "classnames";
-import React, { useCallback } from "react";
-import "./index.scss";
+import React from "react";
 import { Popup } from "../Popup";
 import { PopupProps } from "../Popup/Popup";
+import "./style";
 
 export interface DialogProps extends PopupProps {
     /**
@@ -55,7 +55,7 @@ function Dialog(props: DialogProps) {
     }
 
     return (
-        <Popup {...rest} getCloseFunc={getCloseFunc} maskClose={maskClose}>
+        <Popup {...rest} getCloseFunc={getCloseFunc} maskClose={maskClose} popupContentCLassName={`${prefixCls}-wrapper`}>
             <div className={classNames(prefixCls, className)} style={style}>
                 {title && (
                     <div className={`${prefixCls}__hd`}>
