@@ -9,7 +9,7 @@ export const FormRouterConfig: RouteConfig[] = [
     {
         title: "Button 按钮",
         path: "/button",
-        component: null,
+        component: loadComponent(() => import("site/pages/Form/Button")),
         exact: true,
     },
     {
@@ -21,7 +21,7 @@ export const FormRouterConfig: RouteConfig[] = [
     {
         title: "List 列表",
         path: "/list",
-        component: null,
+        component: loadComponent(() => import("site/pages/Form/List")),
         exact: true,
     },
 ];
