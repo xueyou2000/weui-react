@@ -1,0 +1,91 @@
+$Dialog: "weui-dialog";
+
+.#{$Dialog} {
+    position: fixed;
+    top: 50%;
+    left: 16px;
+    right: 16px;
+    transform: translate(0, -50%);
+    background-color: #ffffff;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    max-height: 90%;
+    text-align: center;
+    overflow: hidden;
+}
+.#{$Dialog}__hd {
+    padding: 32px 24px 16px;
+}
+.#{$Dialog}__title {
+    font-weight: 700;
+    font-size: 17px;
+    line-height: 1.4;
+}
+.#{$Dialog}__bd {
+    flex: 1;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 32px 24px 0 24px;
+    margin-bottom: 32px;
+    font-size: 17px;
+    line-height: 1.4;
+    word-wrap: break-word;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.#{$Dialog}__title + .#{$Dialog}__bd {
+    padding-top: 0;
+}
+
+.#{$Dialog}__ft {
+    position: relative;
+    line-height: 56px;
+    min-height: 56px;
+    font-size: 17px;
+    display: flex;
+
+    &:after {
+        content: " ";
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        height: 1px;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        color: rgba(0, 0, 0, 0.1);
+        transform-origin: 0 0;
+        transform: scaleY(0.5);
+    }
+}
+.#{$Dialog}__btn {
+    display: block;
+    flex: 1;
+    color: #576b95;
+    font-weight: 700;
+    text-decoration: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    position: relative;
+
+    &:active {
+        background-color: #ececec;
+    }
+
+    &:after {
+        content: " ";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 1px;
+        bottom: 0;
+        border-left: 1px solid rgba(0, 0, 0, 0.1);
+        color: rgba(0, 0, 0, 0.1);
+        transform-origin: 0 0;
+        transform: scaleX(0.5);
+    }
+}
+.#{$Dialog}__btn_default {
+    color: rgba(0, 0, 0, 0.9);
+}

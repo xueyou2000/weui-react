@@ -81,7 +81,7 @@ export const FeedbackRouterConfig: RouteConfig[] = [
     {
         title: "Dialog 模态对话框",
         path: "/dialog",
-        component: null,
+        component: loadComponent(() => import("site/pages/FeedBack/Dialog")),
         exact: true,
     },
     {

@@ -49,7 +49,7 @@ function findHost() {
 
     for (var dev in ifaces) {
         ifaces[dev].forEach(function(details, alias) {
-            if (details.family == "IPv4" && details.address.indexOf("192") !== -1) {
+            if (details.family == "IPv4" && details.address.indexOf("127") === -1) {
                 host = details.address;
             }
         });

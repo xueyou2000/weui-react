@@ -4,6 +4,8 @@ export * from "./List";
 export * from "./Grid";
 export * from "./Mediabox";
 export * from "./Preview";
+export * from "./Popup";
+export * from "./Dialog";
 
 import Icon from "./Icon";
 export { Icon };
