@@ -15,7 +15,31 @@ export const FormRouterConfig: RouteConfig[] = [
     {
         title: "Form 表单",
         path: "/form",
-        component: null,
+        component: loadComponent(() => import("site/pages/Form/Form")),
+        exact: true,
+    },
+    {
+        title: "Checkbox 复选框",
+        path: "/checkbox",
+        component: loadComponent(() => import("site/pages/Form/Checkbox")),
+        exact: true,
+    },
+    {
+        title: "Switch 开关",
+        path: "/switch",
+        component: loadComponent(() => import("site/pages/Form/Switch")),
+        exact: true,
+    },
+    {
+        title: "DatePicker 日期选择",
+        path: "/datePicker",
+        component: loadComponent(() => import("site/pages/Form/DatePIcker")),
+        exact: true,
+    },
+    {
+        title: "Keyboard 金额键盘",
+        path: "/keyboard",
+        component: loadComponent(() => import("site/pages/Form/Keyboard")),
         exact: true,
     },
     {
@@ -114,6 +138,12 @@ export const FeedbackRouterConfig: RouteConfig[] = [
         component: loadComponent(() => import("site/pages/FeedBack/Tooptips")),
         exact: true,
     },
+    {
+        title: "Skeleton 骨架屏",
+        path: "/skeleton",
+        component: loadComponent(() => import("site/pages/FeedBack/Skeleton")),
+        exact: true,
+    },
 ];
 
 /**
@@ -141,6 +171,30 @@ export const SearchRouterConfig: RouteConfig[] = [
 ];
 
 /**
+ * 扩展路由
+ */
+export const ExpandRouteConfig: RouteConfig[] = [
+    {
+        title: "表单结构",
+        path: "/form/structure",
+        component: loadComponent(() => import("site/pages/Form/Form/Structure")),
+        exact: true,
+    },
+    {
+        title: "表单验证",
+        path: "/form/valid",
+        component: loadComponent(() => import("site/pages/Form/Form/Validate")),
+        exact: true,
+    },
+    {
+        title: "表单方法",
+        path: "/form/methods",
+        component: loadComponent(() => import("site/pages/Form/Form/Methods")),
+        exact: true,
+    },
+];
+
+/**
  * 全部路由
  */
-export default [...FormRouterConfig, ...BaseRouterConfig, ...FeedbackRouterConfig, ...NavRouterConfig, ...SearchRouterConfig, ...SearchRouterConfig];
+export default [...FormRouterConfig, ...BaseRouterConfig, ...FeedbackRouterConfig, ...NavRouterConfig, ...SearchRouterConfig, ...SearchRouterConfig, ...ExpandRouteConfig];

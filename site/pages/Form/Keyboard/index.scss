@@ -1,0 +1,106 @@
+.keyboard-demo {
+    .xy-keyboard-key:active {
+        .submit-btn {
+            background: #175fb1;
+        }
+    }
+
+    .xy-keyboard-key .submit-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        // display: block;
+        width: 100%;
+        height: 100%;
+        color: #fff;
+        background-color: #00428e;
+        letter-spacing: 2px;
+        transition: 0.3s;
+
+        &.disabled {
+            cursor: not-allowed;
+            color: rgba(0, 0, 0, 0.25);
+            background-color: #f5f5f5;
+            border-color: #d9d9d9;
+        }
+
+        &.loading {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .payment-page__bd {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+    .paymeny-title {
+        font-size: 24px;
+        line-height: 53px;
+        text-align: center;
+    }
+    .fake-amount-input {
+        padding: 0 15px 12px;
+        position: relative;
+        box-sizing: border-box;
+
+        .amount-placeholder {
+            width: 100%;
+            padding: 0 25px;
+            text-align: left;
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 1;
+            color: #bebebe;
+            font-size: 18px;
+            height: 54px;
+            line-height: 54px;
+            box-sizing: border-box;
+        }
+        .amount-input {
+            z-index: 2;
+            position: relative;
+            padding: 0 10px;
+            border: 1px solid #06bf04;
+            border-radius: 5px;
+            text-align: right;
+            height: 54px;
+            line-height: 54px;
+            font-size: 36px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .amount_plan {
+            position: absolute;
+            color: #bebebe;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            padding: 0 25px;
+            height: 54px;
+            line-height: 54px;
+            font-size: 36px;
+            width: 100%;
+            text-align: right;
+            box-sizing: border-box;
+        }
+        .unit {
+            display: inline-block;
+            vertical-align: top;
+        }
+        .amount {
+            display: inline-block;
+            max-width: 62%;
+            color: #000;
+            vertical-align: top;
+            word-break: keep-all;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-family: "Lucida Grande", "Lucida Sans Unicode", "Helvetica Neue", "Hiragino Sans GB", "Microsoft Yahei", sans-serif;
+        }
+    }
+}

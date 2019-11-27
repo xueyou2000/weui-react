@@ -135,7 +135,7 @@ function Picker(props: PickerProps) {
             _data = createCascadeData(data as PickerItem[], saveVal);
         }
         for (let i = 0; i < _data.length; ++i) {
-            groups.push(<PickerGroup key={i} cascade={cascade} data={_data[i]} index={i} value={getValByArray(i, saveVal)} onChange={changeColValue} />);
+            groups.push(<PickerGroup key={i} cascade={cascade} data={_data[i]} index={i} value={getValByArray(i, saveVal)} onChange={changeColValue} passive={!!defaultValue} />);
         }
 
         return groups;

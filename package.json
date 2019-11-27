@@ -35,9 +35,11 @@
     ],
     "dependencies": {
         "classnames": "^2.2.6",
+        "utils-dom": "^0.0.70",
         "utils-hooks": "^0.0.75",
         "xy-badge": "^0.1.0",
-        "xy-form": "^0.4.0"
+        "xy-form": "^0.4.0",
+        "xy-tabs": "^1.2.2"
     },
     "devDependencies": {
         "@fortawesome/fontawesome-svg-core": "^1.2.25",

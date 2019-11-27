@@ -37,6 +37,10 @@ export interface PickerGroupProps {
      * 改变选中值
      */
     onChange?: (val: any, i: number) => void;
+    /**
+     * 初次不主动设置值
+     */
+    passive?: boolean;
 }
 
 /**
@@ -60,7 +64,7 @@ function calcIndex(offset: number) {
 }
 
 function PickerGroup(props: PickerGroupProps) {
-    const { prefixCls = "weui-picker", data, index, onChange, cascade } = props;
+    const { prefixCls = "weui-picker", data, index, onChange, passive } = props;
     // 中心索引
     const half = Math.floor(data.length / 2);
     const [value, setValue, isControll] = useControll(props, "value", "defaultValue", data[half].value);
@@ -123,7 +127,7 @@ function PickerGroup(props: PickerGroupProps) {
 
     useEffect(() => {
         // 确保有默认值
-        if (value === null && data.length > 0) {
+        if (value === null && data.length > 0 && !passive) {
             changeValue(data[0].value);
         }
     }, [value]);
