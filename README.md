@@ -17,7 +17,7 @@
 
 # weui-react-v2
 
-`weui`的`React`实现, 用于微信公众号页面, 包含很多常用组件。[在线例子](https://xueyou2000.github.io/weui-react-v2/site-dest)
+`weui`的`React`实现, 用于微信公众号页面, 包含很多常用组件。[在线例子](https://xueyou2000.github.io/weui-react/site-dest)
 
 ## 安装
 
