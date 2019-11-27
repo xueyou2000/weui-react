@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import React, { useEffect, useRef } from "react";
 import { EXITED, useControll, useMount, useTranstion, ENTERED, GetDrawerContainerFuc, usePortal } from "utils-hooks";
-import "./style";
+import "./style/index.scss";
 
 export interface PopupProps {
     /**

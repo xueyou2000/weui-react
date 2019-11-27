@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import React from "react";
 import { useControll } from "utils-hooks";
-import "./style";
+import "./style/index.scss";
 
 export interface SwitchProps {
     /**

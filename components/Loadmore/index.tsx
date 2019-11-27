@@ -1,6 +1,6 @@
 import React from "react";
 import classNames from "classnames";
-import "./style";
+import "./style/index.scss";
 import { Loading } from "../Icon/Loading";
 
 export interface LoadmoreProps {

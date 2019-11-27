@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import React, { useEffect, useRef, useState } from "react";
 import { useUnmount } from "utils-hooks";
-import "./style";
+import "./style/index.scss";
 
 export interface CountDownProps {
     /**

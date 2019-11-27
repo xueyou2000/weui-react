@@ -4,7 +4,7 @@ import { FormContext, FormItemContext, FormItemField } from "xy-form";
 import { FormItemFailResult, FormItemFieldProps } from "xy-form/es/interface";
 import { ValidateResult } from "xy-form/es/ValidateUtils/ValidateInterface";
 import { ListItem } from "../List";
-import "./style";
+import "./style/index.scss";
 
 export interface FormItemProps<T = any, NormalizeResult = any> extends Pick<Partial<FormItemFieldProps<T, NormalizeResult>>, Exclude<keyof Partial<FormItemFieldProps<T, NormalizeResult>>, "label">> {
     /**

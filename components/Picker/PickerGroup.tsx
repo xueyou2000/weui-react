@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from "react";
 import { useControll, useMount } from "utils-hooks";
 import { clamp } from "../utils/number-utils";
 import { PickerItem } from "./Picker";
-import "./style";
+import "./style/index.scss";
 
 // 单行选项高度
 const ITEM_HEIGHT = 48;

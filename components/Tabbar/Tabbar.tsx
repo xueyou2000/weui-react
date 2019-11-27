@@ -3,7 +3,7 @@ import React from "react";
 import { Tabs } from "xy-tabs";
 import "xy-tabs/assets/index.css";
 import { TabsProps } from "xy-tabs/es/interface";
-import "./style";
+import "./style/index.scss";
 import TabPanelBox from "./TabPanelBox";
 
 function Tabbar(props: TabsProps) {

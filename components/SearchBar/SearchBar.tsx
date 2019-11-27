@@ -2,7 +2,7 @@ import classNames from "classnames";
 import React, { useEffect, useRef, useState } from "react";
 import { useControll, useDebounceCallback } from "utils-hooks";
 import { Icon } from "..";
-import "./style";
+import "./style/index.scss";
 
 export interface SearchBarProps {
     /**

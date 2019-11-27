@@ -4,7 +4,7 @@ import Icon from "../Icon";
 import Loading from "../Icon/Loading";
 import { Popup } from "../Popup";
 import { PopupProps } from "../Popup/Popup";
-import "./style";
+import "./style/index.scss";
 
 export interface ToastProps extends PopupProps {
     /**

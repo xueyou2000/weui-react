@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Popup } from "../Popup";
 import { PopupProps } from "../Popup/Popup";
 import Icon from "../Icon";
-import "./style";
+import "./style/index.scss";
 
 export interface HalfScreenDialogProps extends PopupProps {
     /**

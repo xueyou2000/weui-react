@@ -3,7 +3,7 @@ import React from "react";
 import { useControll } from "utils-hooks";
 import { List, ListItem } from "../List";
 import SearchBar, { SearchBarProps } from "./SearchBar";
-import "./style";
+import "./style/index.scss";
 
 export interface SearchPanelProps<T = any> extends SearchBarProps {
     /**

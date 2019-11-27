@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import React, { useRef, useState } from "react";
 import { useControll } from "utils-hooks";
-import "./style";
+import "./style/index.scss";
 import { keyboradDown } from "./AmountKeyboardUtils";
 
 export interface KeyboardProps {

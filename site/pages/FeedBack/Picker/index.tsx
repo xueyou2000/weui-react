@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Page from "site/components/Page";
-import { Picker, PickerListItem, PickerPanel, PickerItem, Button, FormItem, Form } from "weui-react";
+import { Picker, PickerListItem, PickerPanel, Button, FormItem, Form } from "weui-react";
+import { PickerItem } from "../../../../components/Picker/Picker";
 
 // 级联数据
 const pickerData: PickerItem[] = [

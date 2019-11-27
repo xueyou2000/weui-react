@@ -2,7 +2,7 @@ import classNames from "classnames";
 import React from "react";
 import { Form, ValidateTrigger } from "xy-form";
 import { FormProps } from "xy-form/es/interface";
-import "./style";
+import "./style/index.scss";
 import { formValidateFailHandle } from "./utils";
 
 export interface WeFormProps extends FormProps {

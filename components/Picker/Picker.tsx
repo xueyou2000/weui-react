@@ -6,7 +6,7 @@ import { HalfScreenDialogProps } from "../HalfScreenDialog/HalfScreenDialog";
 import { fillingArray } from "../utils/array-utils";
 import { isArray } from "../utils/object-utils";
 import PickerGroup from "./PickerGroup";
-import "./style";
+import "./style/index.scss";
 
 export interface PickerItem {
     /**

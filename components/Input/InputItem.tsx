@@ -6,7 +6,7 @@ import { FormItem } from "../Form";
 import { FormItemProps } from "../Form/FormItem";
 import Icon from "../Icon";
 import Input, { InputProps } from "./Input";
-import "./style";
+import "./style/index.scss";
 
 function NumberNormalize(val: string) {
     if (val) {

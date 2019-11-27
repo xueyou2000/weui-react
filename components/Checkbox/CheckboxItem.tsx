@@ -5,7 +5,7 @@ import { FormItemFieldProps } from "xy-form/es/interface";
 import { ListItem } from "../List";
 import { ListItemProps } from "../List/ListItem";
 import Checkbox, { CheckboxProps } from "./Checkbox";
-import "./style";
+import "./style/index.scss";
 
 export type CheckboxItemProps = CheckboxProps & ListItemProps & FormItemFieldProps;
 

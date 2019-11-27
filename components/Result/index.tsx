@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import React from "react";
 import Icon from "../Icon";
-import "./style";
+import "./style/index.scss";
 
 export interface ResultProps {
     /**

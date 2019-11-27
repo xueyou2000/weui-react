@@ -4,7 +4,7 @@ import { FormContext, FormItemField } from "xy-form";
 import { FormItemFieldProps } from "xy-form/es/interface";
 import { ListItem } from "../List";
 import { ListItemProps } from "../List/ListItem";
-import "./style";
+import "./style/index.scss";
 import { SwitchProps } from "./Switch";
 
 export type SwitchItemProps = SwitchProps & ListItemProps & FormItemFieldProps;

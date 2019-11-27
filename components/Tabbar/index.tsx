@@ -1,4 +1,4 @@
-import "./style";
+import "./style/index.scss";
 import { TabPanelNode } from "xy-tabs";
 import "xy-tabs/assets/index.css";
 import Tabbar from "./Tabbar";

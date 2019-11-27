@@ -1,6 +1,6 @@
 import React from "react";
 import classNames from "classnames";
-import "./Style";
+import "./style/index.scss";
 
 export interface PanelProps {
     /**

@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import React from "react";
 import PreviewHead from "./PreviewHead";
-import "./style";
+import "./style/index.scss";
 
 export interface PreviewProps {
     /**

@@ -32,16 +32,16 @@ export default {
         clear({
             targets: ["dest"],
         }),
-        scss({
-            output: "dest/weui-react.css",
-            outputStyle: "compressed",
-            sourceMap: true,
-        }),
         resolve({
             extensions,
         }),
         commonjs({
             include: "node_modules/**",
+        }),
+        scss({
+            output: "dest/weui-react.css",
+            outputStyle: "compressed",
+            sourceMap: true,
         }),
         typescript(),
         uglify(),

@@ -3,7 +3,7 @@ import { GetDrawerContainerFuc, useControll, usePortal } from "utils-hooks";
 import { fillingArray } from "../utils/array-utils";
 import { isArray } from "../utils/object-utils";
 import Picker, { createCascadeData, PickerItem, PickerProps } from "./Picker";
-import "./style";
+import "./style/index.scss";
 
 export interface PickerPanelProps extends PickerProps {
     /**

@@ -1,5 +1,5 @@
 import React from "react";
-import "./style";
+import "./style/index.scss";
 
 function Stripe() {
     return <div className="stripe" />;

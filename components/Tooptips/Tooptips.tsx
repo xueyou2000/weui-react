@@ -2,7 +2,7 @@ import classNames from "classnames";
 import React from "react";
 import { Popup } from "../Popup";
 import { PopupProps } from "../Popup/Popup";
-import "./style";
+import "./style/index.scss";
 
 export interface TooptipsProps extends PopupProps {
     /**

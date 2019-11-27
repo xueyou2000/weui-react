@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import React from "react";
 import Loading from "../Icon/Loading";
-import "./style";
+import "./style/index.scss";
 
 export type ButtonType = "primary" | "default" | "danger";
 
