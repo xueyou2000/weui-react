@@ -3771,6 +3771,11 @@ locate-path@^3.0.0:
     p-locate "^3.0.0"
     path-exists "^3.0.0"
 
+lodash-es@^4.17.15:
+  version "4.17.15"
+  resolved "https://registry.npm.taobao.org/lodash-es/download/lodash-es-4.17.15.tgz#21bd96839354412f23d7a10340e5eac6ee455d78"
+  integrity sha1-Ib2Wg5NUQS8j16EDQOXqxu5FXXg=
+
 lodash.memoize@^4.1.2:
   version "4.1.2"
   resolved "https://registry.npm.taobao.org/lodash.memoize/download/lodash.memoize-4.1.2.tgz#bcc6c49a42a2840ed997f323eada5ecd182e0bfe"
@@ -6866,6 +6871,11 @@ utils-hooks@^0.0.71:
   resolved "https://registry.npm.taobao.org/utils-hooks/download/utils-hooks-0.0.71.tgz#d26d8fb6d2a5bffebc50fa7f190b85d195759706"
   integrity sha1-0m2PttKlv/68UPp/GQuF0ZV1lwY=
 
+utils-hooks@^0.0.72:
+  version "0.0.72"
+  resolved "https://registry.npm.taobao.org/utils-hooks/download/utils-hooks-0.0.72.tgz#00349dd7f03f79340e50455e7c2fe63ce74bf6f9"
+  integrity sha1-ADSd1/A/eTQOUEVefC/mPOdL9vk=
+
 utils-hooks@^0.0.75:
   version "0.0.75"
   resolved "https://registry.npm.taobao.org/utils-hooks/download/utils-hooks-0.0.75.tgz#b436fd6be169f9dd6baebd9be32506b1b2c4d15a"
@@ -6886,6 +6896,11 @@ v8-compile-cache@2.0.3:
   resolved "https://registry.npm.taobao.org/v8-compile-cache/download/v8-compile-cache-2.0.3.tgz#00f7494d2ae2b688cfe2899df6ed2c54bef91dbe"
   integrity sha1-APdJTSritojP4omd9u0sVL75Hb4=
 
+validate-methods@^1.0.51, validate-methods@^1.0.54:
+  version "1.0.54"
+  resolved "https://registry.npm.taobao.org/validate-methods/download/validate-methods-1.0.54.tgz#ef0e3b6b07524c82d1e113570f287a35bb8587fd"
+  integrity sha1-7w47awdSTILR4RNXDyh6NbuFh/0=
+
 validate-npm-package-license@^3.0.1:
   version "3.0.4"
   resolved "https://registry.npm.taobao.org/validate-npm-package-license/download/validate-npm-package-license-3.0.4.tgz#fc91f6b9c7ba15c857f4cb2c5defeec39d4f410a"
@@ -6893,6 +6908,19 @@ validate-npm-package-license@^3.0.1:
   dependencies:
     spdx-correct "^3.0.0"
     spdx-expression-parse "^3.0.0"
+
+validate-provider@^1.0.31, validate-provider@^1.0.33:
+  version "1.0.33"
+  resolved "https://registry.npm.taobao.org/validate-provider/download/validate-provider-1.0.33.tgz#a30a52b1051cf88846d8522cbdd10055e020df46"
+  integrity sha1-owpSsQUc+IhG2FIsvdEAVeAg30Y=
+
+validate-runner@^1.0.22:
+  version "1.0.22"
+  resolved "https://registry.npm.taobao.org/validate-runner/download/validate-runner-1.0.22.tgz#b172e1842584238a5dc5535c95cd5be5c009e615"
+  integrity sha1-sXLhhCWEI4pdxVNclc1b5cAJ5hU=
+  dependencies:
+    validate-methods "^1.0.51"
+    validate-provider "^1.0.31"
 
 value-equal@^1.0.1:
   version "1.0.1"
@@ -7189,6 +7217,20 @@ xy-badge@^0.1.0:
     react "^16.12.0"
     react-dom "^16.12.0"
     utils-hooks "^0.0.71"
+
+xy-form@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.npm.taobao.org/xy-form/download/xy-form-0.4.0.tgz#5ed5bd0d66d01029fcc2a0167e1ca1aea878f052"
+  integrity sha1-XtW9DWbQECn8wqAWfhyhrqh48FI=
+  dependencies:
+    classnames "^2.2.6"
+    lodash-es "^4.17.15"
+    react "^16.12.0"
+    react-dom "^16.12.0"
+    utils-hooks "^0.0.72"
+    validate-methods "^1.0.54"
+    validate-provider "^1.0.33"
+    validate-runner "^1.0.22"
 
 y18n@^3.2.1:
   version "3.2.1"

@@ -1,0 +1,25 @@
+$Toptips: "weui-toptips";
+
+.#{$Toptips}-wrapper {
+    position: fixed;
+    top: 8px;
+    left: 8px;
+    right: 8px;
+    font-size: 14px;
+    text-align: center;
+    color: #fff;
+    z-index: 5000;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+.#{$Toptips} {
+    padding: 10px;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+.#{$Toptips}-type-success {
+    background-color: #07c160;
+}
+.#{$Toptips}-type-fail {
+    background-color: #fa5151;
+}

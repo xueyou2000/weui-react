@@ -8,6 +8,9 @@ export * from "./Popup";
 export * from "./Dialog";
 export * from "./Actionsheet";
 export * from "./HalfScreenDialog";
+export * from "./Tooptips";
+export * from "./Form";
+export * from "./Picker";
 
 import Icon from "./Icon";
 export { Icon };

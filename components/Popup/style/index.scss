@@ -35,7 +35,7 @@ $Popup: "weui-popup";
     -webkit-overflow-scrolling: touch;
     animation: fadeOut ease 0.3s forwards;
     &.hidden-mask {
-        background: none;
+        display: none !important;
     }
 }
 .#{$Popup}-content {
@@ -73,7 +73,7 @@ $Popup: "weui-popup";
     }
 }
 
-/**底部拉出动画 **/
+/** 底部拉出动画 **/
 .drill {
     display: block;
     animation: drillOut ease 0.3s forwards;
@@ -106,5 +106,39 @@ $Popup: "weui-popup";
     100% {
         opacity: 0;
         transform: translate(0, 100%);
+    }
+}
+
+/** 顶部拉出动画 **/
+.drillUp {
+    display: block;
+    animation: drillUpOut ease 0.3s forwards;
+
+    &.drillUp-open {
+        display: block;
+        animation: drillUpIn ease 0.3s forwards;
+    }
+    &.drillUp-state-unmounted {
+        display: none;
+    }
+}
+@keyframes drillUpIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-120%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@keyframes drillUpOut {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-120%);
     }
 }

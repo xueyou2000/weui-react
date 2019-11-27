@@ -99,13 +99,19 @@ export const FeedbackRouterConfig: RouteConfig[] = [
     {
         title: "Picker 选择器",
         path: "/picker",
-        component: null,
+        component: loadComponent(() => import("site/pages/FeedBack/Picker")),
         exact: true,
     },
     {
         title: "Toast 轻提示",
         path: "/toast",
         component: loadComponent(() => import("site/pages/FeedBack/Toast")),
+        exact: true,
+    },
+    {
+        title: "Tooptips 工具提示",
+        path: "/tooptips",
+        component: loadComponent(() => import("site/pages/FeedBack/Tooptips")),
         exact: true,
     },
 ];
