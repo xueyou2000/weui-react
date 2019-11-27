@@ -11,12 +11,14 @@ const CaseSensitivePathsPlugin = require("case-sensitive-paths-webpack-plugin");
 const { findHost } = require("./utils");
 
 module.exports = (env) => {
-    const devMode = !(env && env.prod);
+    const devMode = !process.env.NODE_ENV;
+    console.log(`============= ${process.env.NODE_ENV} ==============`);
     return {
         mode: devMode ? "development" : "production",
         devtool: "source-map",
         entry: path.join(__dirname, "../site", "index.tsx"),
         output: {
+            publicPath: devMode ? "/" : "./",
             path: path.join(__dirname, "../site-dest"),
             filename: "js/[name].js",
             chunkFilename: "js/[name].chunk.js",

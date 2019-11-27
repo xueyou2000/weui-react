@@ -1,12 +1,11 @@
 {
     "compilerOptions": {
         "baseUrl": "./",
-        "outDir": "es",
         "target": "es5",
         "module": "esnext",
-        "declaration": true,
+        "declaration": false,
         "skipLibCheck": true,
-        "sourceMap": true,
+        "sourceMap": false,
         "jsx": "react",
         "importHelpers": true,
         "strict": false,
@@ -24,6 +23,5 @@
             "site/*": ["site/*"],
             "weui-react": ["components/index"]
         }
-    },
-    "exclude": ["node_modules", "es"]
+    }
 }
