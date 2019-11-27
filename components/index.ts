@@ -26,3 +26,9 @@ export { Panel };
 
 import Badge from "./Badge";
 export { Badge };
+
+import Result from "./Result";
+export { Result };
+
+import Footer from "./Footer";
+export { Footer };

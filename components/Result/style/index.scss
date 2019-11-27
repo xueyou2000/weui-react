@@ -1,0 +1,61 @@
+$Result: "weui-msg";
+
+.#{$Result} {
+    padding-top: 48px;
+    padding: calc(48px + constant(safe-area-inset-top)) constant(safe-area-inset-right) constant(safe-area-inset-bottom) constant(safe-area-inset-left);
+    padding: calc(48px + env(safe-area-inset-top)) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+    text-align: center;
+    line-height: 1.4;
+    min-height: 100%;
+    box-sizing: border-box;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+
+    a:not(.weui-btn) {
+        color: #576b95;
+        display: inline-block;
+        vertical-align: baseline;
+    }
+}
+.#{$Result}__icon-area {
+    margin-bottom: 32px;
+
+    .weui-icon {
+        width: 94px;
+        height: 94px;
+    }
+}
+.#{$Result}__text-area {
+    margin-bottom: 32px;
+    padding: 0 32px;
+    flex: 1;
+    line-height: 1.6;
+}
+.#{$Result}__title {
+    margin-bottom: 16px;
+    font-weight: 700;
+    font-size: 22px;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+.#{$Result}__desc {
+    font-size: 17px;
+    color: rgba(0, 0, 0, 0.9);
+    word-wrap: break-word;
+    word-break: break-all;
+    margin-bottom: 16px;
+}
+.#{$Result}__opr-area {
+    margin-bottom: 16px;
+}
+.#{$Result}__extra-area {
+    margin-bottom: 24px;
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.5);
+}
+.#{$Result}__opr-area + .#{$Result}__extra-area {
+    margin-top: 48px;
+}

@@ -93,7 +93,7 @@ export const FeedbackRouterConfig: RouteConfig[] = [
     {
         title: "Result 消息结果",
         path: "/result",
-        component: null,
+        component: loadComponent(() => import("site/pages/FeedBack/Result")),
         exact: true,
     },
     {
