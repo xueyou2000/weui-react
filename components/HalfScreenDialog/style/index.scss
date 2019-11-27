@@ -1,0 +1,90 @@
+$HalfScreen: "weui-half-screen-dialog";
+
+.#{$HalfScreen}-wrapper {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    max-height: 75%;
+    z-index: 5000;
+    line-height: 1.4;
+    background-color: #ffffff;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    overflow: hidden;
+    padding: 0 calc(24px + constant(safe-area-inset-right)) constant(safe-area-inset-bottom) calc(24px + constant(safe-area-inset-left));
+    padding: 0 calc(24px + env(safe-area-inset-right)) env(safe-area-inset-bottom) calc(24px + env(safe-area-inset-left));
+    user-select: none;
+    -webkit-user-select: none;
+}
+.#{$HalfScreen}__hd {
+    font-size: 8px;
+    height: 8em;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+
+    .weui-icon-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
+.#{$HalfScreen}__hd__side {
+    position: relative;
+    left: -8px;
+}
+.#{$HalfScreen}__hd__main {
+    flex: 1;
+}
+.#{$HalfScreen}__hd__side + .#{$HalfScreen}__hd__main {
+    text-align: center;
+    padding: 0 40px;
+}
+.#{$HalfScreen}__hd__main + .#{$HalfScreen}__hd__side .weui-icon-btn {
+    right: 0;
+}
+.#{$HalfScreen}__title {
+    display: block;
+    color: rgba(0, 0, 0, 0.9);
+    font-weight: 700;
+    font-size: 15px;
+}
+.#{$HalfScreen}__subtitle {
+    display: block;
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 10px;
+}
+
+.#{$HalfScreen}__bd {
+    word-wrap: break-word;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+    overflow-y: auto;
+}
+.#{$HalfScreen}__desc {
+    padding-top: 4px;
+    font-size: 17px;
+    font-weight: 700;
+    color: rgba(0, 0, 0, 0.9);
+    line-height: 1.4;
+}
+.#{$HalfScreen}__tips {
+    padding-top: 16px;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.3);
+    line-height: 1.4;
+}
+.#{$HalfScreen}__ft {
+    padding: 40px 24px 32px;
+    text-align: center;
+}
+
+.#{$HalfScreen}__ft .weui-btn:nth-last-child(n + 2),
+.#{$HalfScreen}__ft .weui-btn:nth-last-child(n + 2) ~ .weui-btn {
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 8px;
+    width: 120px;
+}

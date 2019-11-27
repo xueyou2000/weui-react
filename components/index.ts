@@ -7,6 +7,7 @@ export * from "./Preview";
 export * from "./Popup";
 export * from "./Dialog";
 export * from "./Actionsheet";
+export * from "./HalfScreenDialog";
 
 import Icon from "./Icon";
 export { Icon };

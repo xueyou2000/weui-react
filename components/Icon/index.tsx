@@ -47,12 +47,18 @@ export interface IconProps {
      * 'back-circle'
      * 'close' 关闭
      * 'close-thin'
+     * 'btn_close' 关闭
+     * 'btn_more' 更多
      */
     icon: string | React.ReactNode;
     /**
      * 是否旋转
      */
     spin?: boolean;
+    /**
+     * 内容
+     */
+    children?: React.ReactNode;
 }
 
 /**
@@ -61,13 +67,14 @@ export interface IconProps {
  * @param props
  */
 function Icon(props: IconProps) {
-    const { prefixCls = "weui-icon", className, style, onClick, icon, spin = false } = props;
+    const { prefixCls = "weui-icon", className, style, onClick, icon, spin = false, children } = props;
     const internal = typeof icon === "string";
     const Icon = icon as any;
 
     return (
         <i className={classNames(prefixCls, className, internal ? `${prefixCls}-${icon}` : null, { spin })} style={style} onClick={onClick}>
             {!internal && <Icon />}
+            {children}
         </i>
     );
 }

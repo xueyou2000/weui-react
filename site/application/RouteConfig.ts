@@ -87,7 +87,7 @@ export const FeedbackRouterConfig: RouteConfig[] = [
     {
         title: "Half-screen Dialog 半屏对话框",
         path: "/half-screen-dialog",
-        component: null,
+        component: loadComponent(() => import("site/pages/FeedBack/HalfScreenDialog")),
         exact: true,
     },
     {
