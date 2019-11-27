@@ -32,3 +32,6 @@ export { Result };
 
 import Footer from "./Footer";
 export { Footer };
+
+import Toast from "./Toast";
+export { Toast };

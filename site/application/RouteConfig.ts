@@ -105,7 +105,7 @@ export const FeedbackRouterConfig: RouteConfig[] = [
     {
         title: "Toast 轻提示",
         path: "/toast",
-        component: null,
+        component: loadComponent(() => import("site/pages/FeedBack/Toast")),
         exact: true,
     },
 ];

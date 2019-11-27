@@ -1,0 +1,44 @@
+$Toast: "xy-toast";
+
+.#{$Toast}-popup {
+    display: flex;
+    justify-content: center;
+}
+.#{$Toast}-wrapper {
+    position: fixed;
+    z-index: 5000;
+    // width: 8.6em;
+    min-width: 7.6em;
+    min-height: 7.6em;
+    top: 37%;
+    // left: 50%;
+    margin-left: -3.8em;
+    background: hsla(0, 0%, 7%, 0.7);
+    text-align: center;
+    border-radius: 6px;
+    color: #fff;
+    padding: 15px;
+    animation: fadeOut ease 0.3s forwards;
+    animation-fill-mode: forwards;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    max-width: 12em;
+    box-sizing: border-box;
+}
+.#{$Toast}-msg {
+    margin: 5px 0 0;
+    font-size: 15px;
+    color: #fff;
+}
+.#{$Toast}-icon {
+    .weui-icon {
+        width: 60px;
+        height: 60px;
+    }
+    .weui-loading {
+        width: 40px;
+        height: 40px;
+    }
+}
