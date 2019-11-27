@@ -38,7 +38,6 @@ export default {
             sourceMap: true,
         }),
         resolve({
-            jsnext: true,
             extensions,
         }),
         commonjs({

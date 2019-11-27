@@ -1,7 +1,7 @@
 import React from "react";
 import classNames from "classnames";
 import "./style";
-import { Loading } from "weui-react";
+import { Loading } from "../Icon/Loading";
 
 export interface LoadmoreProps {
     /**

@@ -12,7 +12,7 @@ const ora = require("ora");
         if (error) {
             spinner.fail("删除目录失败" + error.message);
         } else {
-            await spawn("npx", ["tsc"]);
+            await spawn("npx", ["tsc", "-p", "./components"]);
             const paths = await globby(["components/**/*.scss"], { markDirectories: true, expandDirectories: true });
 
             for (let i = 0; i < paths.length; ++i) {
