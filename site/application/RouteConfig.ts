@@ -153,7 +153,7 @@ export const NavRouterConfig: RouteConfig[] = [
     {
         title: "Tabbar 标签栏",
         path: "/tabbar",
-        component: null,
+        component: loadComponent(() => import("site/pages/Nav/Tabbar")),
         exact: true,
     },
 ];
@@ -165,7 +165,7 @@ export const SearchRouterConfig: RouteConfig[] = [
     {
         title: "Search 搜索框",
         path: "/search",
-        component: null,
+        component: loadComponent(() => import("site/pages/Search")),
         exact: true,
     },
 ];

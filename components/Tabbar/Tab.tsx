@@ -17,8 +17,7 @@ function Tab(props: TabProps) {
     const { children, icon } = props;
     return (
         <React.Fragment>
-            <Icon className="weui-tabbar__icon" icon={icon} />
-            {/* <img className="weui-tabbar__icon" src={icon} alt="" /> */}
+            {typeof icon === "string" ? <img className="weui-tabbar__icon" src={icon} alt="" /> : <Icon className="weui-tabbar__icon" icon={icon} />}
             <p className="weui-tabbar__label">{children}</p>
         </React.Fragment>
     );

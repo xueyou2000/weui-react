@@ -65,6 +65,9 @@ function SearchPanel(props: SearchPanelProps) {
         if (onPicker) {
             onPicker(d);
         }
+        if (props.onConfirm) {
+            props.onConfirm(d);
+        }
         handleVisibleChange(false);
     }
 
