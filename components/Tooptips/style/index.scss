@@ -1,6 +1,6 @@
 $Toptips: "weui-toptips";
 
-.weui-popup-content.#{$Toptips}-wrapper {
+.#{$Toptips}-wrapper {
     position: fixed;
     top: 8px;
     left: 8px;
@@ -11,6 +11,10 @@ $Toptips: "weui-toptips";
     z-index: 5000;
     word-wrap: break-word;
     word-break: break-all;
+}
+.weui-popup-content.#{$Toptips}-wrapper {
+    position: fixed;
+    z-index: 5000;
 }
 .#{$Toptips} {
     padding: 10px;

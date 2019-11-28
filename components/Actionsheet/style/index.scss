@@ -1,6 +1,6 @@
 $Actionsheet: "weui-actionsheet";
 
-.weui-popup-content.#{$Actionsheet}-wrapper {
+.#{$Actionsheet}-wrapper {
     position: fixed;
     left: 0;
     bottom: 0;
@@ -12,6 +12,10 @@ $Actionsheet: "weui-actionsheet";
     overflow: hidden;
     user-select: none;
     -webkit-user-select: none;
+}
+.weui-popup-content.#{$Actionsheet}-wrapper {
+    position: fixed;
+    z-index: 5000;
 }
 .#{$Actionsheet}__title {
     position: relative;

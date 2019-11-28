@@ -4,7 +4,7 @@ $Toast: "xy-toast";
     display: flex;
     justify-content: center;
 }
-.weui-popup-content.#{$Toast}-wrapper {
+.#{$Toast}-wrapper {
     position: fixed;
     z-index: 5000;
     // width: 8.6em;
@@ -27,6 +27,11 @@ $Toast: "xy-toast";
     max-width: 12em;
     box-sizing: border-box;
 }
+.weui-popup-content.#{$Toast}-wrapper {
+    position: fixed;
+    z-index: 5000;
+}
+
 .#{$Toast}-msg {
     margin: 5px 0 0;
     font-size: 15px;

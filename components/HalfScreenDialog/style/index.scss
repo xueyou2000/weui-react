@@ -1,6 +1,6 @@
 $HalfScreen: "weui-half-screen-dialog";
 
-.weui-popup-content.#{$HalfScreen}-wrapper {
+.#{$HalfScreen}-wrapper {
     position: fixed;
     left: 0;
     right: 0;
@@ -16,6 +16,10 @@ $HalfScreen: "weui-half-screen-dialog";
     padding: 0 calc(24px + env(safe-area-inset-right)) env(safe-area-inset-bottom) calc(24px + env(safe-area-inset-left));
     user-select: none;
     -webkit-user-select: none;
+}
+.weui-popup-content.#{$HalfScreen}-wrapper {
+    position: fixed;
+    z-index: 5000;
 }
 .#{$HalfScreen}__hd {
     font-size: 8px;
