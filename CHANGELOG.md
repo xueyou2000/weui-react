@@ -1,5 +1,10 @@
 # Change Log
 
+## 0.5.1 (Thu Nov 28 2019)
+
+-   修复 weui-popup-content 样式权重过高问题
+-   修复`Dialog`组件样式高度问题
+
 ## 0.5.0 (Thu Nov 28 2019)
 
 -   修复编译后`png`文件丢失问题
