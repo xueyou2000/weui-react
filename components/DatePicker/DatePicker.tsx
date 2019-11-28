@@ -2,6 +2,7 @@ import React from "react";
 import { dateFormatParse, daysInMonth } from "utils-dom";
 import { Picker } from "../Picker";
 import { PickerItem, PickerProps } from "../Picker/Picker";
+import "./style/index.scss";
 
 export interface DatePickerProps extends PickerProps {
     /**
@@ -47,7 +48,7 @@ export function createCascadeDates(start: number, end: number): PickerItem[] {
 
 function DatePicker(props: DatePickerProps) {
     const { start = today.getFullYear() - 20, end = today.getFullYear() + 30, ...rest } = props;
-    return <Picker {...rest} defaultValue={props.defaultValue || todayValue} data={createCascadeDates(start, end)} cascade={true} cols={3} />;
+    return <Picker {...rest} value={props.value || todayValue} defaultValue={props.defaultValue || todayValue} data={createCascadeDates(start, end)} cascade={true} cols={3} />;
 }
 
 export default React.memo(DatePicker);

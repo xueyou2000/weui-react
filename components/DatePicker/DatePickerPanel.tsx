@@ -38,10 +38,11 @@ const DatePickerPanel = React.forwardRef((props: DatePickerProps & DatePickerPan
     }
 
     function changeValue(v: number[]) {
+        console.log("change", v);
         setValue(v);
-        if (props.onChange) {
-            props.onChange(v);
-        }
+        // if (props.onChange) {
+        //     props.onChange(v);
+        // }
     }
 
     function _getPickerLabel() {
@@ -53,7 +54,7 @@ const DatePickerPanel = React.forwardRef((props: DatePickerProps & DatePickerPan
             <p ref={ref} onClick={() => changeVisible(true)}>
                 {!value || value.length === 0 || value[0] === null ? <span className="placeholder">{placeholder}</span> : _getPickerLabel()}
             </p>
-            <DatePicker {...rest} start={start} end={end} defaultValue={defaultValue} visible={visible} onVisibleChange={changeVisible} onChange={changeValue} />
+            <DatePicker {...rest} start={start} end={end} defaultValue={defaultValue} visible={visible} onVisibleChange={changeVisible} onConfirm={changeValue} />
         </div>
     );
 });

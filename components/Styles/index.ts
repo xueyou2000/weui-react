@@ -26,3 +26,4 @@ import "../Switch/style";
 import "../Tabbar/style";
 import "../Toast/style";
 import "../Tooptips/style";
+import "../DatePicker/style";

@@ -1,6 +1,6 @@
 $HalfScreen: "weui-half-screen-dialog";
 
-.#{$HalfScreen}-wrapper {
+.weui-popup-content.#{$HalfScreen}-wrapper {
     position: fixed;
     left: 0;
     right: 0;

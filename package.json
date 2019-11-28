@@ -1,6 +1,6 @@
 {
     "name": "weui-react-v2",
-    "version": "0.3.1",
+    "version": "0.4.0",
     "description": "weui的react实现",
     "main": "es/index.js",
     "types": "es/index.d.ts",

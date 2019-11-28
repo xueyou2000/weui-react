@@ -1,6 +1,6 @@
 $Dialog: "weui-dialog";
 
-.#{$Dialog}-wrapper {
+.weui-popup-content.#{$Dialog}-wrapper {
     position: fixed;
     top: 50%;
     left: 16px;
@@ -13,6 +13,7 @@ $Dialog: "weui-dialog";
     max-height: 90%;
     text-align: center;
     overflow: hidden;
+    z-index: 1001;
 }
 .#{$Dialog}__hd {
     padding: 32px 24px 16px;

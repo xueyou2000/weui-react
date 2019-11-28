@@ -127,7 +127,7 @@ function PickerGroup(props: PickerGroupProps) {
 
     useEffect(() => {
         // 确保有默认值
-        if (value === null && data.length > 0 && !passive) {
+        if (value === null && data.length > 0) {
             changeValue(data[0].value);
         }
     }, [value]);

@@ -161,15 +161,15 @@ function PickerDemo() {
                     </React.Fragment>
                 }
             >
-                <FormItem prop="merchantType" label="单列Picker" arrow={true}>
+                <FormItem defaultValue={[3]} prop="merchantType" label="单列Picker" arrow={true}>
                     <PickerPanel cols={1} placeholder="请选择票据类型" title="单列Picker" data={pickerDataA} />
                 </FormItem>
 
-                <FormItem prop="merchantType2" label="双列数据" arrow={true}>
+                <FormItem defaultValue={[103, 204]} prop="merchantType2" label="双列数据" arrow={true}>
                     <PickerPanel cols={2} placeholder="请选择票据类型" title="双列数据" data={pickerDataB} />
                 </FormItem>
 
-                <FormItem prop="merchantType3" label="级联数据" arrow={true}>
+                <FormItem defaultValue={[2, 202]} prop="merchantType3" label="级联数据" arrow={true}>
                     <PickerPanel cascade={true} cols={2} placeholder="请选择票据类型" title="级联数据" data={pickerData} />
                 </FormItem>
             </Form>
