@@ -47,7 +47,7 @@ function Toast(props: ToastProps) {
     const { prefixCls = "xy-toast", className, style, type = "success", children, duration = 3000, ...rest } = props;
 
     return (
-        <Popup {...rest} duration={duration} maskClose={false} popupClassName={`${prefixCls}-popup`} popupContentCLassName={`${prefixCls}-wrapper`}>
+        <Popup {...rest} duration={duration} mask={false} maskClose={false} popupClassName={`${prefixCls}-popup`} popupContentCLassName={`${prefixCls}-wrapper`}>
             <div className={classNames(prefixCls, className)} style={style} data-type={type}>
                 <div className={`${prefixCls}-icon`}>{getIcon(type)}</div>
                 <div className={`${prefixCls}-msg`}>{children}</div>

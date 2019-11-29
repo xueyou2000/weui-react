@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.5.3 (Fri Nov 29 2019)
+
+-   `Toast`取消背景遮罩
+
 ## 0.5.2 (Fri Nov 29 2019)
 
 -   导出`getPickerLabel`方法
