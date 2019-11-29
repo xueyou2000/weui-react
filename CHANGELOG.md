@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.5.2 (Fri Nov 29 2019)
+
+-   导出`getPickerLabel`方法
+
 ## 0.5.1 (Thu Nov 28 2019)
 
 -   修复 weui-popup-content 样式权重过高问题
