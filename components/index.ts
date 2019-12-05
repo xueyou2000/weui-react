@@ -55,3 +55,6 @@ export { Keyboard, AmountKeyboardUtils };
 import Skeleton from "./Skeleton";
 import Stripe from "./Skeleton/Stripe";
 export { Skeleton, Stripe };
+
+import Rate from "./Rate";
+export { Rate };

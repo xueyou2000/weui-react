@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.6.1 (Thu Dec 05 2019)
+
+-   增加`Rate`评级组件
+
 ## 0.6.0 (Thu Dec 05 2019)
 
 -   将`px`翻倍, 配合`postcss-px-to-viewport`使用.

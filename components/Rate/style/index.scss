@@ -1,0 +1,47 @@
+$Rate: "xy-rate";
+
+.#{$Rate} {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    color: rgba(0, 0, 0, 0.65);
+    font-size: 14px;
+    font-variant: tabular-nums;
+    line-height: 1.5;
+    -webkit-font-feature-settings: "tnum";
+    font-feature-settings: "tnum";
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    color: #fadb14;
+    font-size: 20px;
+    line-height: unset;
+    list-style: none;
+    outline: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.#{$Rate}-star {
+    position: relative;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    color: inherit;
+    cursor: pointer;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+
+    &:not(:last-child) {
+        margin-right: 8px;
+    }
+
+    &.#{$Rate}-full .#{$Rate}-second {
+        color: inherit;
+    }
+}
+
+.#{$Rate}-second {
+    color: #e8e8e8;
+    transition: all 0.3s;
+}

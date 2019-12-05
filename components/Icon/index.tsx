@@ -49,6 +49,7 @@ export interface IconProps {
      * 'close-thin'
      * 'btn_close' 关闭
      * 'btn_more' 更多
+     * 'star' 星星
      */
     icon: string | React.ReactNode;
     /**

@@ -144,6 +144,12 @@ export const FeedbackRouterConfig: RouteConfig[] = [
         component: loadComponent(() => import("site/pages/FeedBack/Skeleton")),
         exact: true,
     },
+    {
+        title: "Rate 评级",
+        path: "/rate",
+        component: loadComponent(() => import("site/pages/FeedBack/Rate")),
+        exact: true,
+    },
 ];
 
 /**
