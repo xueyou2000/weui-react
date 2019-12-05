@@ -5,7 +5,7 @@ $PickerGroup: "#{$Picker}__group";
     display: flex;
     position: relative;
     background-color: #fff;
-    height: 240px;
+    height: 480px;
     overflow: hidden;
     user-select: none;
     -webkit-user-select: none;
@@ -34,14 +34,14 @@ $PickerGroup: "#{$Picker}__group";
     background: -webkit-linear-gradient(top, hsla(0, 0%, 100%, 0.95), hsla(0, 0%, 100%, 0.6)), -webkit-linear-gradient(bottom, hsla(0, 0%, 100%, 0.95), hsla(0, 0%, 100%, 0.6));
     background: linear-gradient(180deg, hsla(0, 0%, 100%, 0.95), hsla(0, 0%, 100%, 0.6)), linear-gradient(0deg, hsla(0, 0%, 100%, 0.95), hsla(0, 0%, 100%, 0.6));
     background-position: top, bottom;
-    background-size: 100% 92px;
+    background-size: 100% 184px;
     background-repeat: no-repeat;
     -webkit-transform: translateZ(0);
     transform: translateZ(0);
 }
 .#{$Picker}__indicator {
-    height: 56px;
-    top: 92px;
+    height: 112px;
+    top: 184px;
 
     &:after,
     &:before {
@@ -49,13 +49,13 @@ $PickerGroup: "#{$Picker}__group";
         position: absolute;
         left: 0;
         right: 0;
-        height: 1px;
+        height: 2px;
         color: rgba(0, 0, 0, 0.1);
     }
 
     &:before {
         top: 0;
-        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        border-top: 2px solid rgba(0, 0, 0, 0.1);
         -webkit-transform-origin: 0 0;
         transform-origin: 0 0;
         -webkit-transform: scaleY(0.5);
@@ -64,7 +64,7 @@ $PickerGroup: "#{$Picker}__group";
 
     &:after {
         bottom: 0;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        border-bottom: 2px solid rgba(0, 0, 0, 0.1);
         -webkit-transform-origin: 0 100%;
         transform-origin: 0 100%;
         -webkit-transform: scaleY(0.5);
@@ -79,8 +79,8 @@ $PickerGroup: "#{$Picker}__group";
     transition: all 0.3s ease 0s;
 }
 .#{$Picker}__item {
-    height: 48px;
-    line-height: 48px;
+    height: 96px;
+    line-height: 96px;
     text-align: center;
     color: rgba(0, 0, 0, 0.9);
     text-overflow: ellipsis;

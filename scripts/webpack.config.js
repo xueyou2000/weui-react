@@ -52,8 +52,39 @@ module.exports = () => {
                 },
                 {
                     test: /\.scss$/,
-                    include: [path.resolve(__dirname, "../components"), path.resolve(__dirname, "../site")],
+                    include: [path.resolve(__dirname, "../site")],
                     loaders: devMode ? ["style-loader", "css-loader", "sass-loader"] : [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
+                },
+                {
+                    test: /\.scss$/,
+                    include: [path.resolve(__dirname, "../components")],
+                    loaders: devMode
+                        ? [
+                              "style-loader",
+                              "css-loader",
+                              "sass-loader",
+                              {
+                                  loader: require.resolve("postcss-loader"),
+                                  options: {
+                                      config: {
+                                          path: path.resolve(__dirname),
+                                      },
+                                  },
+                              },
+                          ]
+                        : [
+                              MiniCssExtractPlugin.loader,
+                              "css-loader",
+                              "sass-loader",
+                              {
+                                  loader: require.resolve("postcss-loader"),
+                                  options: {
+                                      config: {
+                                          path: path.resolve(__dirname),
+                                      },
+                                  },
+                              },
+                          ],
                 },
                 {
                     test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,

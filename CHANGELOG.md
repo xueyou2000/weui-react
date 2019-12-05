@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.6.0 (Thu Dec 05 2019)
+
+-   将`px`翻倍, 配合`postcss-px-to-viewport`使用.
+
 ## 0.5.3 (Fri Nov 29 2019)
 
 -   `Toast`取消背景遮罩

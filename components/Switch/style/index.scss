@@ -2,11 +2,11 @@
     -webkit-appearance: none;
     appearance: none;
     position: relative;
-    width: 52px;
-    height: 32px;
-    border: 2px solid rgba(0, 0, 0, 0.1);
+    width: 104px;
+    height: 64px;
+    border: 4px solid rgba(0, 0, 0, 0.1);
     outline: 0;
-    border-radius: 16px;
+    border-radius: 32px;
     box-sizing: border-box;
     background-color: #ffffff;
     -webkit-transition: background-color 0.1s, border 0.1s;
@@ -24,7 +24,7 @@
         left: 0;
         bottom: 0;
         right: 0;
-        border-radius: 15px;
+        border-radius: 30px;
         background-color: #fdfdfd;
         transition: -webkit-transform 0.35s cubic-bezier(0.45, 1, 0.4, 1);
         transition: transform 0.35s cubic-bezier(0.45, 1, 0.4, 1);
@@ -36,11 +36,11 @@
         position: absolute;
         top: 0;
         left: 0;
-        width: 28px;
-        height: 28px;
-        border-radius: 15px;
+        width: 56px;
+        height: 56px;
+        border-radius: 30px;
         background-color: #ffffff;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
         transition: -webkit-transform 0.35s cubic-bezier(0.4, 0.4, 0.25, 1.35);
         transition: transform 0.35s cubic-bezier(0.4, 0.4, 0.25, 1.35);
         transition: transform 0.35s cubic-bezier(0.4, 0.4, 0.25, 1.35), -webkit-transform 0.35s cubic-bezier(0.4, 0.4, 0.25, 1.35);
@@ -50,6 +50,6 @@
         transform: scale(0);
     }
     &:checked:after {
-        transform: translateX(20px);
+        transform: translateX(40px);
     }
 }

@@ -7,8 +7,8 @@ $Actionsheet: "weui-actionsheet";
     z-index: 5000;
     width: 100%;
     background-color: #eae7e8;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
     overflow: hidden;
     user-select: none;
     -webkit-user-select: none;
@@ -19,15 +19,15 @@ $Actionsheet: "weui-actionsheet";
 }
 .#{$Actionsheet}__title {
     position: relative;
-    height: 56px;
-    padding: 0 24px;
+    height: 112px;
+    padding: 0 48px;
     display: -webkit-box;
     display: -webkit-flex;
     display: flex;
     justify-content: center;
     flex-direction: column;
     text-align: center;
-    font-size: 12px;
+    font-size: 24px;
     color: rgba(0, 0, 0, 0.5);
     line-height: 1.4;
     background: #ffffff;
@@ -38,8 +38,8 @@ $Actionsheet: "weui-actionsheet";
         left: 0;
         bottom: 0;
         right: 0;
-        height: 1px;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        height: 2px;
+        border-bottom: 2px solid rgba(0, 0, 0, 0.1);
         color: rgba(0, 0, 0, 0.1);
         transform-origin: 0 100%;
         transform: scaleY(0.5);
@@ -58,9 +58,9 @@ $Actionsheet: "weui-actionsheet";
 }
 .#{$Actionsheet}__cell {
     position: relative;
-    padding: 16px;
+    padding: 32px;
     text-align: center;
-    font-size: 17px;
+    font-size: 34px;
     line-height: 1.41176471;
 
     &:active {
@@ -73,15 +73,15 @@ $Actionsheet: "weui-actionsheet";
         left: 0;
         top: 0;
         right: 0;
-        height: 1px;
-        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        height: 2px;
+        border-top: 2px solid rgba(0, 0, 0, 0.1);
         color: rgba(0, 0, 0, 0.1);
         transform-origin: 0 0;
         transform: scaleY(0.5);
     }
 }
 .#{$Actionsheet}__action {
-    margin-top: 8px;
+    margin-top: 16px;
     background-color: #ffffff;
     padding-bottom: constant(safe-area-inset-bottom);
     padding-bottom: env(safe-area-inset-bottom);

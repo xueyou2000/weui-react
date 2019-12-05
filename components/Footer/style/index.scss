@@ -2,7 +2,7 @@ $Footer: "weui-footer";
 
 .#{$Footer} {
     color: rgba(0, 0, 0, 0.3);
-    font-size: 14px;
+    font-size: 28px;
     line-height: 1.4;
     text-align: center;
 
@@ -16,9 +16,9 @@ $Footer: "weui-footer";
     a {
         display: inline-block;
         vertical-align: top;
-        margin: 0 8px;
+        margin: 0 16px;
         position: relative;
-        font-size: 14px;
+        font-size: 28px;
         color: #576b95;
 
         &:not(:first-child):before {
@@ -26,15 +26,15 @@ $Footer: "weui-footer";
             position: absolute;
             left: 0;
             top: 0;
-            width: 1px;
+            width: 2px;
             bottom: 0;
-            border-left: 1px solid #c7c7c7;
+            border-left: 2px solid #c7c7c7;
             color: #c7c7c7;
             -webkit-transform-origin: 0 0;
             transform-origin: 0 0;
             -webkit-transform: scaleX(0.5);
             transform: scaleX(0.5);
-            left: -8px;
+            left: -16px;
             top: 0.36em;
             bottom: 0.36em;
         }
@@ -42,7 +42,7 @@ $Footer: "weui-footer";
 }
 
 .#{$Footer}__text {
-    padding: 0 16px;
-    font-size: 12px;
-    line-height: 23px;
+    padding: 0 34px;
+    font-size: 24px;
+    line-height: 46px;
 }

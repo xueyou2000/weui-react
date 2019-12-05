@@ -11,8 +11,8 @@ $GridWrap: "#{$GridItem}s";
         left: 0;
         top: 0;
         right: 0;
-        height: 1px;
-        border-top: 1px solid #d9d9d9;
+        height: 2px;
+        border-top: 2px solid #d9d9d9;
         color: #d9d9d9;
         -webkit-transform-origin: 0 0;
         transform-origin: 0 0;
@@ -25,9 +25,9 @@ $GridWrap: "#{$GridItem}s";
         position: absolute;
         left: 0;
         top: 0;
-        width: 1px;
+        width: 2px;
         bottom: 0;
-        border-left: 1px solid #d9d9d9;
+        border-left: 2px solid #d9d9d9;
         color: #d9d9d9;
         -webkit-transform-origin: 0 0;
         transform-origin: 0 0;
@@ -39,7 +39,7 @@ $GridWrap: "#{$GridItem}s";
 .#{$GridItem} {
     position: relative;
     float: left;
-    padding: 20px 10px;
+    padding: 40px 20px;
     width: 33.33333333%;
     box-sizing: border-box;
 
@@ -48,9 +48,9 @@ $GridWrap: "#{$GridItem}s";
         position: absolute;
         right: 0;
         top: 0;
-        width: 1px;
+        width: 2px;
         bottom: 0;
-        border-right: 1px solid #d9d9d9;
+        border-right: 2px solid #d9d9d9;
         color: #d9d9d9;
         -webkit-transform-origin: 100% 0;
         transform-origin: 100% 0;
@@ -64,8 +64,8 @@ $GridWrap: "#{$GridItem}s";
         left: 0;
         bottom: 0;
         right: 0;
-        height: 1px;
-        border-bottom: 1px solid #d9d9d9;
+        height: 2px;
+        border-bottom: 2px solid #d9d9d9;
         color: #d9d9d9;
         -webkit-transform-origin: 0 100%;
         transform-origin: 0 100%;
@@ -79,8 +79,8 @@ $GridWrap: "#{$GridItem}s";
 }
 
 .#{$GridItem}__icon {
-    width: 28px;
-    height: 28px;
+    width: 56px;
+    height: 56px;
     margin: 0 auto;
 
     & > img {
@@ -94,12 +94,12 @@ $GridWrap: "#{$GridItem}s";
     display: block;
     text-align: center;
     color: rgba(0, 0, 0, 0.9);
-    font-size: 14px;
+    font-size: 28px;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
 }
 
 .#{$GridItem}__icon + .#{$GridItem}__label {
-    margin-top: 4px;
+    margin-top: 8px;
 }

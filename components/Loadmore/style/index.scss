@@ -4,7 +4,7 @@ $Loadmore: "weui-loadmore";
     width: 65%;
     margin: 1.5em auto;
     line-height: 1.6em;
-    font-size: 14px;
+    font-size: 28px;
     text-align: center;
 }
 .#{$Loadmore}__tips {
@@ -15,7 +15,7 @@ $Loadmore: "weui-loadmore";
 
 // 线模式
 .#{$Loadmore}_line {
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-top: 2px solid rgba(0, 0, 0, 0.1);
     margin-top: 2.4em;
 
     .#{$Loadmore}__tips {
@@ -34,8 +34,8 @@ $Loadmore: "weui-loadmore";
 
         &:before {
             content: " ";
-            width: 4px;
-            height: 4px;
+            width: 8px;
+            height: 8px;
             border-radius: 50%;
             background-color: rgba(0, 0, 0, 0.1);
             display: inline-block;

@@ -24,28 +24,28 @@ $Keyboard: "xy-keyboard";
         animation-name: translateXIn;
         // opacity: 1;
         // transform: translate3d(0, 0, 0);
-        box-shadow: 1px 1px 7px 0px rgba(0, 0, 0, 0.3);
+        box-shadow: 2px 2px 14px 0px rgba(0, 0, 0, 0.3);
     }
 }
 .#{$Keyboard}-inner {
-    height: 240px;
+    height: 480px;
     position: relative;
     background-color: #fff;
 }
 .#{$Keyboard}-key {
     position: absolute;
-    font-size: 24px;
+    font-size: 48px;
     font-family: sans-serif;
     color: #000;
     display: block;
     width: 25%;
-    border: 1px solid #dedfe2;
-    margin: -1px;
+    border: 2px solid #dedfe2;
+    margin: -2px;
     background-color: #fafafb;
     font-family: "PingFang SC", "Microsoft yahei", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
-    height: 60px;
-    line-height: 60px;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+    height: 120px;
+    line-height: 120px;
     box-sizing: content-box;
     user-select: none;
     -webkit-touch-callout: none;
@@ -92,22 +92,25 @@ $Keyboard: "xy-keyboard";
         top: 0;
     }
     &.top-1 {
-        top: 25%;
+        top: 120px;
+        // top: 25%;
     }
     &.top-2 {
-        top: 50%;
+        top: 240px;
+        // top: 50%;
     }
     &.top-3 {
-        top: 75%;
+        top: 360px;
+        // top: 75%;
     }
     &[data-code="backspace"] img {
-        width: 33px;
+        width: 66px;
         border: 0;
         box-sizing: border-box;
     }
 
     &.confirm-btn {
-        height: 180px;
+        height: 360px;
     }
 }
 
@@ -116,11 +119,24 @@ $Keyboard: "xy-keyboard";
         height: calc(13.86667vw * 4);
 
         .#{$Keyboard}-key {
-            height: 52px;
-            line-height: 52px;
+            height: 104px;
+            line-height: 104px;
+
+            &.top-1 {
+                top: 104px;
+                // top: 25%;
+            }
+            &.top-2 {
+                top: 208px;
+                // top: 50%;
+            }
+            &.top-3 {
+                top: 312px;
+                // top: 75%;
+            }
 
             &.confirm-btn {
-                height: 195px;
+                height: 416px;
             }
         }
     }
@@ -137,11 +153,11 @@ $Keyboard: "xy-keyboard";
     }
 
     75% {
-        transform: translate3d(0, 2px, 0);
+        transform: translate3d(0, 4px, 0);
     }
 
     90% {
-        transform: translate3d(0, 2px, 0);
+        transform: translate3d(0, 4px, 0);
     }
 
     to {

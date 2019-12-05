@@ -2,7 +2,7 @@ $Pabel: "weui-panel";
 
 .#{$Pabel} {
     background-color: #ffffff;
-    margin-top: 10px;
+    margin-top: 20px;
     position: relative;
     overflow: hidden;
 
@@ -16,8 +16,8 @@ $Pabel: "weui-panel";
         left: 0;
         top: 0;
         right: 0;
-        height: 1px;
-        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        height: 2px;
+        border-top: 2px solid rgba(0, 0, 0, 0.1);
         color: rgba(0, 0, 0, 0.1);
         -webkit-transform-origin: 0 0;
         transform-origin: 0 0;
@@ -31,8 +31,8 @@ $Pabel: "weui-panel";
         left: 0;
         bottom: 0;
         right: 0;
-        height: 1px;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        height: 2px;
+        border-bottom: 2px solid rgba(0, 0, 0, 0.1);
         color: rgba(0, 0, 0, 0.1);
         -webkit-transform-origin: 0 100%;
         transform-origin: 0 100%;
@@ -41,9 +41,9 @@ $Pabel: "weui-panel";
     }
 }
 .#{$Pabel}__hd {
-    padding: 16px 16px 13px;
+    padding: 32px 32px 26px;
     color: rgba(0, 0, 0, 0.9);
-    font-size: 15px;
+    font-size: 30px;
     font-weight: 700;
     position: relative;
 
@@ -53,13 +53,13 @@ $Pabel: "weui-panel";
         left: 0;
         bottom: 0;
         right: 0;
-        height: 1px;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        height: 2px;
+        border-bottom: 2px solid rgba(0, 0, 0, 0.1);
         color: rgba(0, 0, 0, 0.1);
         -webkit-transform-origin: 0 100%;
         transform-origin: 0 100%;
         -webkit-transform: scaleY(0.5);
         transform: scaleY(0.5);
-        left: 15px;
+        left: 30px;
     }
 }

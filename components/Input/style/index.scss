@@ -27,8 +27,8 @@ textarea {
 }
 .weui-btn_input-clear {
     display: none;
-    padding-left: 8px;
-    height: 24px;
+    padding-left: 16px;
+    height: 48px;
     overflow: hidden;
 
     &.visible {
@@ -39,5 +39,5 @@ textarea {
     display: inline;
 }
 .weui-btn_input-clear [class*="weui-icon-"] {
-    width: 18px;
+    width: 36px;
 }

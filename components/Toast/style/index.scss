@@ -15,9 +15,9 @@ $Toast: "xy-toast";
     margin-left: -3.8em;
     background: hsla(0, 0%, 7%, 0.7);
     text-align: center;
-    border-radius: 6px;
+    border-radius: 16px;
     color: #fff;
-    padding: 15px;
+    padding: 30px;
     animation: fadeOut ease 0.3s forwards;
     animation-fill-mode: forwards;
     display: flex;
@@ -33,17 +33,17 @@ $Toast: "xy-toast";
 }
 
 .#{$Toast}-msg {
-    margin: 5px 0 0;
-    font-size: 15px;
+    margin: 10px 0 0;
+    font-size: 30px;
     color: #fff;
 }
 .#{$Toast}-icon {
     .weui-icon {
-        width: 60px;
-        height: 60px;
+        width: 120px;
+        height: 120px;
     }
     .weui-loading {
-        width: 40px;
-        height: 40px;
+        width: 80px;
+        height: 80px;
     }
 }

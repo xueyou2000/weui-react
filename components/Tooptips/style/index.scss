@@ -2,10 +2,10 @@ $Toptips: "weui-toptips";
 
 .#{$Toptips}-wrapper {
     position: fixed;
-    top: 8px;
-    left: 8px;
-    right: 8px;
-    font-size: 14px;
+    top: 16px;
+    left: 16px;
+    right: 16px;
+    font-size: 28px;
     text-align: center;
     color: #fff;
     z-index: 5000;
@@ -17,8 +17,8 @@ $Toptips: "weui-toptips";
     z-index: 5000;
 }
 .#{$Toptips} {
-    padding: 10px;
-    border-radius: 8px;
+    padding: 20px;
+    border-radius: 16px;
     box-sizing: border-box;
 }
 .#{$Toptips}-type-success {

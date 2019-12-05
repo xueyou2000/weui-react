@@ -4,8 +4,8 @@
     zoom: 1;
     display: block;
     box-sizing: border-box;
-    margin-left: -2px;
-    margin-right: -2px;
+    margin-left: -4px;
+    margin-right: -4px;
 
     &:before,
     &:after {
@@ -40,9 +40,9 @@
     display: block;
     box-sizing: border-box;
     position: relative;
-    min-height: 1px;
-    padding-left: 4px;
-    padding-right: 4px;
+    min-height: 2px;
+    padding-left: 8px;
+    padding-right: 8px;
 }
 
 .col-22 {
@@ -77,9 +77,9 @@
 }
 
 .stripe {
-    height: 16px;
-    margin: 4px 0;
-    border-radius: 2px;
+    height: 32px;
+    margin: 8px 0;
+    border-radius: 4px;
     background: linear-gradient(90deg, #f2f2f2 25%, #e6e6e6 37%, #f2f2f2 63%);
     animation: stripe-loading 1.4s ease infinite;
     background-size: 400% 100%;

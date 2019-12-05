@@ -9,11 +9,11 @@ $HalfScreen: "weui-half-screen-dialog";
     z-index: 5000;
     line-height: 1.4;
     background-color: #ffffff;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
     overflow: hidden;
-    padding: 0 calc(24px + constant(safe-area-inset-right)) constant(safe-area-inset-bottom) calc(24px + constant(safe-area-inset-left));
-    padding: 0 calc(24px + env(safe-area-inset-right)) env(safe-area-inset-bottom) calc(24px + env(safe-area-inset-left));
+    padding: 0 calc(48px + constant(safe-area-inset-right)) constant(safe-area-inset-bottom) calc(48px + constant(safe-area-inset-left));
+    padding: 0 calc(48px + env(safe-area-inset-right)) env(safe-area-inset-bottom) calc(48px + env(safe-area-inset-left));
     user-select: none;
     -webkit-user-select: none;
 }
@@ -22,7 +22,7 @@ $HalfScreen: "weui-half-screen-dialog";
     z-index: 5000;
 }
 .#{$HalfScreen}__hd {
-    font-size: 8px;
+    font-size: 16px;
     height: 8em;
     display: -webkit-box;
     display: -webkit-flex;
@@ -37,14 +37,14 @@ $HalfScreen: "weui-half-screen-dialog";
 }
 .#{$HalfScreen}__hd__side {
     position: relative;
-    left: -8px;
+    left: -16px;
 }
 .#{$HalfScreen}__hd__main {
     flex: 1;
 }
 .#{$HalfScreen}__hd__side + .#{$HalfScreen}__hd__main {
     text-align: center;
-    padding: 0 40px;
+    padding: 0 80px;
 }
 .#{$HalfScreen}__hd__main + .#{$HalfScreen}__hd__side .weui-icon-btn {
     right: 0;
@@ -53,12 +53,12 @@ $HalfScreen: "weui-half-screen-dialog";
     display: block;
     color: rgba(0, 0, 0, 0.9);
     font-weight: 700;
-    font-size: 15px;
+    font-size: 30px;
 }
 .#{$HalfScreen}__subtitle {
     display: block;
     color: rgba(0, 0, 0, 0.5);
-    font-size: 10px;
+    font-size: 20px;
 }
 
 .#{$HalfScreen}__bd {
@@ -68,20 +68,20 @@ $HalfScreen: "weui-half-screen-dialog";
     overflow-y: auto;
 }
 .#{$HalfScreen}__desc {
-    padding-top: 4px;
-    font-size: 17px;
+    padding-top: 8px;
+    font-size: 34px;
     font-weight: 700;
     color: rgba(0, 0, 0, 0.9);
     line-height: 1.4;
 }
 .#{$HalfScreen}__tips {
-    padding-top: 16px;
-    font-size: 14px;
+    padding-top: 32px;
+    font-size: 28px;
     color: rgba(0, 0, 0, 0.3);
     line-height: 1.4;
 }
 .#{$HalfScreen}__ft {
-    padding: 40px 24px 32px;
+    padding: 80px 48px 64px;
     text-align: center;
 }
 
@@ -89,6 +89,6 @@ $HalfScreen: "weui-half-screen-dialog";
 .#{$HalfScreen}__ft .weui-btn:nth-last-child(n + 2) ~ .weui-btn {
     display: inline-block;
     vertical-align: top;
-    margin: 0 8px;
-    width: 120px;
+    margin: 0 16px;
+    width: 240px;
 }

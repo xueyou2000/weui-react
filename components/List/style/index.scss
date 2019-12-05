@@ -2,7 +2,7 @@ $ListItem: "weui-cell";
 $List: "weui-cells";
 
 .#{$ListItem} {
-    padding: 16px;
+    padding: 32px;
     position: relative;
     display: flex;
     align-items: center;
@@ -13,14 +13,14 @@ $List: "weui-cells";
         left: 0;
         top: 0;
         right: 0;
-        height: 1px;
-        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        height: 2px;
+        border-top: 2px solid rgba(0, 0, 0, 0.1);
         color: rgba(0, 0, 0, 0.1);
         -webkit-transform-origin: 0 0;
         transform-origin: 0 0;
         -webkit-transform: scaleY(0.5);
         transform: scaleY(0.5);
-        left: 16px;
+        left: 32px;
         z-index: 2;
     }
 }
@@ -34,13 +34,13 @@ $List: "weui-cells";
     }
 
     .#{$ListItem}__ft {
-        padding-right: 22px;
+        padding-right: 44px;
         position: relative;
 
         &:after {
             content: " ";
-            width: 12px;
-            height: 24px;
+            width: 24px;
+            height: 48px;
             -webkit-mask-position: 0 0;
             mask-position: 0 0;
             -webkit-mask-repeat: no-repeat;
@@ -54,7 +54,7 @@ $List: "weui-cells";
             position: absolute;
             top: 50%;
             right: 0;
-            margin-top: -12px;
+            margin-top: -24px;
         }
     }
 }
@@ -67,19 +67,19 @@ $List: "weui-cells";
 }
 
 .#{$List}__title {
-    margin-top: 16px;
-    margin-bottom: 3px;
-    padding-left: 16px;
-    padding-right: 16px;
+    margin-top: 32px;
+    margin-bottom: 6px;
+    padding-left: 32px;
+    padding-right: 32px;
     color: rgba(0, 0, 0, 0.5);
-    font-size: 14px;
+    font-size: 28px;
     line-height: 1.4;
 }
 .#{$List} {
-    margin-top: 8px;
+    margin-top: 16px;
     background-color: #ffffff;
     line-height: 1.41176471;
-    font-size: 17px;
+    font-size: 34px;
     overflow: hidden;
     position: relative;
 
@@ -89,8 +89,8 @@ $List: "weui-cells";
         left: 0;
         top: 0;
         right: 0;
-        height: 1px;
-        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        height: 2px;
+        border-top: 2px solid rgba(0, 0, 0, 0.1);
         color: rgba(0, 0, 0, 0.1);
         -webkit-transform-origin: 0 0;
         transform-origin: 0 0;
@@ -105,8 +105,8 @@ $List: "weui-cells";
         left: 0;
         bottom: 0;
         right: 0;
-        height: 1px;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        height: 2px;
+        border-bottom: 2px solid rgba(0, 0, 0, 0.1);
         color: rgba(0, 0, 0, 0.1);
         -webkit-transform-origin: 0 100%;
         transform-origin: 0 100%;
@@ -121,9 +121,9 @@ $List: "weui-cells";
 
 .#{$List}__group.#{$List}__group_form {
     .#{$List}__title {
-        margin-top: 24px;
-        margin-bottom: 8px;
-        padding: 0 32px;
+        margin-top: 48px;
+        margin-bottom: 16px;
+        padding: 0 64px;
     }
 
     &:first-child .#{$List}__title {
@@ -133,15 +133,15 @@ $List: "weui-cells";
 
 .#{$List}__group_form {
     .#{$ListItem} {
-        padding: 16px 32px;
+        padding: 32px 64px;
         color: rgba(0, 0, 0, 0.9);
     }
     .#{$ListItem}__hd {
-        padding-right: 16px;
+        padding-right: 32px;
     }
     .weui-label {
         max-width: 5em;
-        margin-right: 8px;
+        margin-right: 16px;
     }
     .#{$ListItem}__bd {
         display: flex;
@@ -149,17 +149,17 @@ $List: "weui-cells";
 
     .#{$List}:before,
     .#{$ListItem}:before {
-        left: 32px;
-        right: 32px;
+        left: 64px;
+        right: 64px;
     }
     .#{$List}:after,
     .#{$ListItem}:after {
-        left: 32px;
-        right: 32px;
+        left: 64px;
+        right: 64px;
     }
 
     .#{$ListItem}__ft {
-        padding-left: 16px;
+        padding-left: 32px;
         font-size: 0;
     }
 
