@@ -7,6 +7,14 @@ export interface PreviewItemProps {
      */
     prefixCls?: string;
     /**
+     * 根节点的附加类名
+     */
+    className?: string;
+    /**
+     * 内联样式
+     */
+    style?: React.CSSProperties;
+    /**
      * 值
      */
     children: React.ReactNode;
@@ -17,10 +25,10 @@ export interface PreviewItemProps {
 }
 
 function PreviewItem(props: PreviewItemProps) {
-    const { prefixCls = "weui-form-preview__", children, title } = props;
+    const { prefixCls = "weui-form-preview__", className, style, children, title } = props;
 
     return (
-        <div>
+        <div className={className} style={style}>
             <label className={`${prefixCls}label`}>{title}</label>
             <span className={`${prefixCls}value`}>{children}</span>
         </div>

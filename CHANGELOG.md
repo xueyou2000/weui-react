@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.6.2 (Thu Dec 05 2019)
+
+-   `PreviewItem`增加`className`属性
+
 ## 0.6.1 (Thu Dec 05 2019)
 
 -   增加`Rate`评级组件
