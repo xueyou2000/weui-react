@@ -81,7 +81,7 @@ function HalfScreenDialog(props: HalfScreenDialogProps) {
         <Popup {...rest} getCloseFunc={getCloseFunc} animateClassName="drill" popupContentCLassName={`${prefixCls}-wrapper`}>
             <div className={classNames(prefixCls, className)} style={style}>
                 <div className={`${prefixCls}__hd`}>
-                    <div className={`${prefixCls}__hd__side`} onClick={close}>
+                    <div className={`${prefixCls}__hd__side`} onClick={() => closeFunc()}>
                         <Icon className="weui-icon-btn" icon="btn_close">
                             关闭
                         </Icon>

@@ -1,5 +1,10 @@
 # Change Log
 
+## 0.6.3 (Thu Dec 05 2019)
+
+-   修复`HalfScreenDialog`左上角关闭按钮事件
+-   修复`Keyboard`确认按钮高度样式
+
 ## 0.6.2 (Thu Dec 05 2019)
 
 -   `PreviewItem`增加`className`属性

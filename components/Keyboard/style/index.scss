@@ -136,7 +136,7 @@ $Keyboard: "xy-keyboard";
             }
 
             &.confirm-btn {
-                height: 416px;
+                height: calc(104px * 3);
             }
         }
     }
