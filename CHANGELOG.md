@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.2.0 (Tue Dec 24 2019)
+
+-   紧急修复`getSaveValue`方法忘记判断`visibleValue`值为空情况, 导致空指针.
+
 ## 1.1.0 (Tue Dec 24 2019)
 
 -   修复`Picker`和`DatePicker`设置`cols`无效问题

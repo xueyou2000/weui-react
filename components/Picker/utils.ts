@@ -58,7 +58,7 @@ function getLabel(val: PickerItem, labelValue: boolean) {
  */
 export function getSaveValue(val: any[], cols: number, visibleValue?: any[]) {
     if (!val || val.length === 0) {
-        return visibleValue.slice(0, cols) || fillingArray(cols, null);
+        return visibleValue ? visibleValue.slice(0, cols) : fillingArray(cols, null);
     } else if (val.length < cols) {
         // 补全val的长度到cols
         for (let i = 0; i < cols; ++i) {
