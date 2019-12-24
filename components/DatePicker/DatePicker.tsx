@@ -4,6 +4,7 @@ import { Picker, PickerItem } from "../Picker";
 import { PickerProps } from "../Picker/Picker";
 import "./style/index.scss";
 import classNames from "classnames";
+import { getLocal } from "../Local";
 
 export interface DatePickerProps extends PickerProps {
     /**
@@ -39,16 +40,16 @@ export function createRange(start: number, end: number, suffix: string, createCh
  * @param end
  */
 export function createCascadeDates(start: number, end: number): PickerItem[] {
-    const data = createRange(start, end, "年");
+    const data = createRange(start, end, getLocal().DatePicker.year);
     data.forEach((yearItem) => {
         const year = yearItem.value;
-        yearItem.children = createRange(1, 12, "月", (month: number) => createRange(1, daysInMonth(dateFormatParse(`${year}-${month}-1`)), "日"));
+        yearItem.children = createRange(1, 12, getLocal().DatePicker.month, (month: number) => createRange(1, daysInMonth(dateFormatParse(`${year}-${month}-1`)), getLocal().DatePicker.day));
     });
     return data;
 }
 
 const DatePicker = React.forwardRef((props: DatePickerProps, ref: React.MutableRefObject<any>) => {
-    const { start = today.getFullYear() - 20, end = today.getFullYear() + 30, value, defaultValue, ...rest } = props;
+    const { start = today.getFullYear() - 20, end = today.getFullYear() + 30, value, defaultValue, placeholder = getLocal().DatePicker.placeholder, ...rest } = props;
 
     return <Picker {...rest} className={classNames("weui-date-picker", props.className)} ref={ref} data={createCascadeDates(start, end)} cascade={true} cols={3} />;
 });

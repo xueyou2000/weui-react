@@ -2,6 +2,7 @@ import classNames from "classnames";
 import React, { useEffect, useRef, useState } from "react";
 import { useUnmount } from "utils-hooks";
 import "./style/index.scss";
+import { getLocal } from "../Local";
 
 export interface CountDownProps {
     /**
@@ -58,7 +59,7 @@ export enum CountdownStatusEnum {
 }
 
 function Countdown(props: CountDownProps) {
-    const { prefixCls = "xy-count-down", className, style, children, disabled = false, onStart, finish = "再次发送", time = 60 } = props;
+    const { prefixCls = "xy-count-down", className, style, children, disabled = false, onStart, finish = getLocal().Countdown.finish, time = 60 } = props;
     // 验证码倒计时数
     const [countdown, setCountdown] = useState(0);
     // 状态 0=正常, 1=倒计时, 2=倒计时完毕
@@ -114,11 +115,12 @@ function Countdown(props: CountDownProps) {
         if (status === CountdownStatusEnum.COUNTDOWN) {
             label = (
                 <span>
-                    剩余<span className={`${prefixCls}_timer_text`}>{countdown}</span>秒
+                    {getLocal().Countdown.remaining}
+                    <span className={`${prefixCls}_timer_text`}>{countdown}</span>秒
                 </span>
             );
         } else {
-            label = loading ? "发送中" : status === CountdownStatusEnum.COMPLETE ? finish : (children as any).props.children;
+            label = loading ? getLocal().Countdown.sending : status === CountdownStatusEnum.COMPLETE ? finish : (children as any).props.children;
         }
         return React.cloneElement(children as any, { loading, disabled, onClick: start, className: "weui-vcode-btn", children: label });
     }

@@ -1,5 +1,10 @@
 # Change Log
 
+## 1.0.0 (Tue Dec 24 2019)
+
+-   重构`Picker`和`DatePicker`, 破坏性重构, 影响使用
+-   增加国际化
+
 ## 0.6.3 (Thu Dec 05 2019)
 
 -   修复`HalfScreenDialog`左上角关闭按钮事件

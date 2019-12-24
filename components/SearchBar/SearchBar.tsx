@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useControll, useDebounceCallback } from "utils-hooks";
 import { Icon } from "..";
 import "./style/index.scss";
+import { getLocal } from "../Local";
 
 export interface SearchBarProps {
     /**
@@ -64,7 +65,7 @@ export interface SearchBarProps {
 }
 
 const SearchBar = React.forwardRef((props: SearchBarProps, ref: React.MutableRefObject<any>) => {
-    const { prefixCls = "weui-search-bar", className, style, placeholder = "搜索", onChange, onConfirm, autoFocus = false, onCancel, onSearch, delay = 200, backfill = true } = props;
+    const { prefixCls = "weui-search-bar", className, style, placeholder = getLocal().SearchBar.placeholder, onChange, onConfirm, autoFocus = false, onCancel, onSearch, delay = 200, backfill = true } = props;
     const [value, setValue, isControll] = useControll(props, "value", "defaultValue");
     const typingRef = useRef(false);
     const searchRef = useRef("");
@@ -187,7 +188,7 @@ const SearchBar = React.forwardRef((props: SearchBarProps, ref: React.MutableRef
                 </label>
             </form>
             <a className={`${prefixCls}__cancel-btn`} onClick={cancelHandle}>
-                取消
+                {getLocal().commom.cancel}
             </a>
         </div>
     );

@@ -1,12 +1,13 @@
 import classNames from "classnames";
 import React, { useState } from "react";
-import "./style/index.scss";
+import { DefineDefaultValue, GetDrawerContainerFuc, useControll } from "utils-hooks";
+import Button from "../Button";
 import { HalfScreenDialog } from "../HalfScreenDialog";
 import { HalfScreenDialogProps } from "../HalfScreenDialog/HalfScreenDialog";
-import Button from "../Button";
-import { useControll, GetDrawerContainerFuc, DefineDefaultValue } from "utils-hooks";
+import { getLocal } from "../Local";
 import PickerPanel, { PickerPanelProps } from "./PickerPanel";
-import { getPickerLabel, getSaveValue, normalizedDate, getValueByDefaul } from "./utils";
+import "./style/index.scss";
+import { getPickerLabel, getSaveValue, getValueByDefaul, normalizedDate } from "./utils";
 
 export interface PickerProps extends HalfScreenDialogProps, PickerPanelProps {
     /**
@@ -50,7 +51,7 @@ const Picker = React.forwardRef((props: PickerProps, ref: React.MutableRefObject
         cascade,
         visibleValue,
         onVisibleValue,
-        placeholder = "请选择",
+        placeholder = getLocal().Picker.placeholder,
         PickerComponent = PickerPanel,
         getContainer,
         ...halfScreenProps
@@ -108,7 +109,7 @@ const Picker = React.forwardRef((props: PickerProps, ref: React.MutableRefObject
                 {label}
                 {addon}
             </div>
-            <HalfScreenDialog {...halfScreenProps} visible={visible} onVisibleChange={changeVisible} footer={[<Button>确定</Button>]} onClick={confirmHandle}>
+            <HalfScreenDialog {...halfScreenProps} visible={visible} onVisibleChange={changeVisible} footer={[<Button>{getLocal().commom.confirm}</Button>]} onClick={confirmHandle}>
                 <PickerComponent {...pickerProps} onChange={changeHandle} />
             </HalfScreenDialog>
         </div>

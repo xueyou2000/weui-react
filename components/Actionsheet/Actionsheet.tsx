@@ -1,6 +1,7 @@
 import classNames from "classnames";
 import React, { useState } from "react";
 import Loading from "../Icon/Loading";
+import { getLocal } from "../Local";
 import { Popup } from "../Popup";
 import { PopupProps } from "../Popup/Popup";
 import "./style/index.scss";
@@ -73,7 +74,7 @@ function Actionsheet(props: ActionsheetProps) {
                 </div>
                 <div className={`${prefixCls}__action`}>
                     <div className={`${prefixCls}__cell`} onClick={() => closeFunc()}>
-                        取消
+                        {getLocal().commom.cancel}
                     </div>
                 </div>
             </div>

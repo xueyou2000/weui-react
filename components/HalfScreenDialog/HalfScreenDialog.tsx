@@ -4,6 +4,7 @@ import { Popup } from "../Popup";
 import { PopupProps } from "../Popup/Popup";
 import Icon from "../Icon";
 import "./style/index.scss";
+import { getLocal } from "../Local";
 
 export interface HalfScreenDialogProps extends PopupProps {
     /**
@@ -83,7 +84,7 @@ function HalfScreenDialog(props: HalfScreenDialogProps) {
                 <div className={`${prefixCls}__hd`}>
                     <div className={`${prefixCls}__hd__side`} onClick={() => closeFunc()}>
                         <Icon className="weui-icon-btn" icon="btn_close">
-                            关闭
+                            {getLocal().commom.close}
                         </Icon>
                     </div>
                     <div className={`${prefixCls}__hd__main`}>
@@ -93,7 +94,7 @@ function HalfScreenDialog(props: HalfScreenDialogProps) {
                     {more && (
                         <div className={`${prefixCls}__hd__side`} onClick={moreClickHandle}>
                             <Icon className="weui-icon-btn" icon="btn_more">
-                                更多
+                                {getLocal().commom.more}
                             </Icon>
                         </div>
                     )}
