@@ -6,7 +6,7 @@ export default {
         more: "更多",
     },
     Countdown: {
-        finish: "在此发送",
+        finish: "再次发送",
         sending: "发送中",
         remaining: "剩余",
     },

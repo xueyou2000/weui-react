@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.0.1 (Tue Dec 24 2019)
+
+-   更新`xy-form`版本, 避免冲突. 不同版本的`FormContext`不一样
+
 ## 1.0.0 (Tue Dec 24 2019)
 
 -   重构`Picker`和`DatePicker`, 破坏性重构, 影响使用

@@ -9139,10 +9139,15 @@ v8-compile-cache@2.0.3:
   resolved "https://registry.npm.taobao.org/v8-compile-cache/download/v8-compile-cache-2.0.3.tgz#00f7494d2ae2b688cfe2899df6ed2c54bef91dbe"
   integrity sha1-APdJTSritojP4omd9u0sVL75Hb4=
 
-validate-methods@^1.0.51, validate-methods@^1.0.54:
+validate-methods@^1.0.51:
   version "1.0.54"
   resolved "https://registry.npm.taobao.org/validate-methods/download/validate-methods-1.0.54.tgz#ef0e3b6b07524c82d1e113570f287a35bb8587fd"
   integrity sha1-7w47awdSTILR4RNXDyh6NbuFh/0=
+
+validate-methods@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.npm.taobao.org/validate-methods/download/validate-methods-1.1.0.tgz#f11658aff27214ced6de12a6e29d157dfd5349f6"
+  integrity sha1-8RZYr/JyFM7W3hKm4p0Vff1TSfY=
 
 validate-npm-package-license@^3.0.1:
   version "3.0.4"
@@ -9560,17 +9565,17 @@ xy-badge@^0.1.0:
     react-dom "^16.12.0"
     utils-hooks "^0.0.71"
 
-xy-form@^0.4.0:
-  version "0.4.0"
-  resolved "https://registry.npm.taobao.org/xy-form/download/xy-form-0.4.0.tgz#5ed5bd0d66d01029fcc2a0167e1ca1aea878f052"
-  integrity sha1-XtW9DWbQECn8wqAWfhyhrqh48FI=
+xy-form@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.npm.taobao.org/xy-form/download/xy-form-0.5.0.tgz#e84b78fe7c323570b82dcab8689ab74d44a27295"
+  integrity sha1-6Et4/nwyNXC4Lcq4aJq3TUSicpU=
   dependencies:
     classnames "^2.2.6"
     lodash-es "^4.17.15"
     react "^16.12.0"
     react-dom "^16.12.0"
     utils-hooks "^0.0.72"
-    validate-methods "^1.0.54"
+    validate-methods "^1.1.0"
     validate-provider "^1.0.33"
     validate-runner "^1.0.22"
 
