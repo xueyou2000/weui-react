@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.3.0 (Tue Dec 24 2019)
+
+-   修复`DatePicker`像`Picker`传递`props`漏掉的属性
+
 ## 1.2.0 (Tue Dec 24 2019)
 
 -   紧急修复`getSaveValue`方法忘记判断`visibleValue`值为空情况, 导致空指针.
