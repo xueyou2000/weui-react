@@ -1,26 +1,35 @@
 import classNames from "classnames";
-import React, { useEffect, useRef } from "react";
-import { useControll, useMount } from "utils-hooks";
+import React, { useEffect, useRef, useState } from "react";
+import { useMount } from "utils-hooks";
 import { clamp } from "../utils/number-utils";
-import { PickerItem } from "./Picker";
 import "./style/index.scss";
+import { PickerItem, getAppropriateValue } from "./utils";
 
 // 单行选项高度
 const ITEM_HEIGHT = 48;
 
-export interface PickerGroupProps {
+// 转换vw单位
+function PxToVw(px: number) {
+    return px / 3.75;
+}
+
+export interface PickerColProps {
     /**
      * 附加类名
      */
     prefixCls?: string;
     /**
-     * 数据
+     * 根节点的附加类名
      */
-    data: PickerItem[];
+    className?: string;
     /**
-     * 是否级联选择
+     * 内联样式
      */
-    cascade?: boolean;
+    style?: React.CSSProperties;
+    /**
+     * 数据源
+     */
+    data?: PickerItem[];
     /**
      * 列索引
      */
@@ -28,19 +37,15 @@ export interface PickerGroupProps {
     /**
      * 选中值
      */
-    value?: any;
-    /**
-     * 默认选中值
-     */
-    defaultValue?: any;
+    value: any;
     /**
      * 改变选中值
      */
-    onChange?: (val: any, i: number) => void;
+    onChange: (val: any, i: number) => void;
     /**
-     * 初次不主动设置值
+     * 当前可视值
      */
-    passive?: boolean;
+    onVisibleValue?: (val: any, i: number) => void;
 }
 
 /**
@@ -63,31 +68,43 @@ function calcIndex(offset: number) {
     return Math.round((96 - offset) / ITEM_HEIGHT);
 }
 
-function PickerGroup(props: PickerGroupProps) {
-    const { prefixCls = "weui-picker", data, index, onChange, passive } = props;
-    // 中心索引
-    const half = Math.floor(data.length / 2);
-    const [value, setValue, isControll] = useControll(props, "value", "defaultValue", data[half].value);
+/**
+ * Picker列
+ */
+function PickerCol(props: PickerColProps) {
+    const { prefixCls = "weui-picker", className, style, data = [], index, value, onChange, onVisibleValue } = props;
+    const [val, setVal] = useState(getAppropriateValue(value, data));
 
-    // 当前选中索引
-    const currentIndex = data.findIndex((x) => x.value === value);
+    function changeValue(v: any) {
+        setVal(v);
+        onChange(v, index);
 
-    // 起始touch偏移
-    const startOffsetRef = useRef(0);
-    // 开始偏移
-    const startTranslate = calcOffset(currentIndex);
-    // 移动偏移
-    const moveTranslate = useRef(0);
-    const contentRef = useRef(null);
-
-    function changeValue(newVal: any) {
-        if (!isControll) {
-            setValue(newVal);
-        }
-        if (onChange) {
-            onChange(newVal, index);
+        if (onVisibleValue) {
+            onVisibleValue(v, index);
         }
     }
+
+    useMount(() => {
+        if (onVisibleValue) {
+            onVisibleValue(getAppropriateValue(value, data), index);
+        }
+    });
+
+    useEffect(() => {
+        // PickerPanel主动触发更新
+        setVal(getAppropriateValue(value, data));
+    }, [value, data]);
+
+    // 滚动条元素引用
+    const contentRef = useRef(null);
+    // 起始touch偏移
+    const startOffsetRef = useRef(0);
+    // 当前选中索引
+    const currentIndex = data.findIndex((x) => x.value === val);
+    // 开始距离
+    const startTranslate = calcOffset(currentIndex);
+    // 偏移距离
+    const moveTranslate = useRef(0);
 
     function touchStart(event: React.TouchEvent<HTMLDivElement>) {
         const contentEle = contentRef.current;
@@ -105,7 +122,7 @@ function PickerGroup(props: PickerGroupProps) {
 
         moveTranslate.current = startTranslate + _offset;
         // console.log(`======move======== 当前translate3d(${startTranslate})  移动偏移(${startTranslate})  计算后偏移(${moveTranslate.current})`);
-        contentEle.style.transform = `translate3d(0px, ${moveTranslate.current}px, 0px)`;
+        contentEle.style.transform = `translate3d(0px, ${PxToVw(moveTranslate.current)}vw, 0px)`;
     }
 
     function touchEnd(event: React.TouchEvent<HTMLDivElement>) {
@@ -118,19 +135,14 @@ function PickerGroup(props: PickerGroupProps) {
         contentEle.style.transition = "all 0.3s ease 0s";
         if (data[i].disabled) {
             // 复原
-            contentEle.style.transform = `translate3d(0px, ${startTranslate}px, 0px)`;
+            contentEle.style.transform = `translate3d(0px, ${PxToVw(startTranslate)}vw, 0px)`;
         } else {
-            contentEle.style.transform = `translate3d(0px, ${calcOffset(i)}px, 0px)`;
-            changeValue(data[i].value);
+            contentEle.style.transform = `translate3d(0px, ${PxToVw(calcOffset(i))}vw, 0px)`;
+            if (val !== data[i].value) {
+                changeValue(data[i].value);
+            }
         }
     }
-
-    useEffect(() => {
-        // 确保有默认值
-        if (value === null && data.length > 0) {
-            changeValue(data[0].value);
-        }
-    }, [value]);
 
     useMount(() => {
         function stopFunc(e: TouchEvent) {
@@ -144,10 +156,10 @@ function PickerGroup(props: PickerGroupProps) {
     });
 
     return (
-        <div className={`${prefixCls}__group`} onTouchStart={touchStart} onTouchMove={touchMove} onTouchEnd={touchEnd}>
+        <div className={classNames(prefixCls + "__col", className)} style={style} onTouchStart={touchStart} onTouchMove={touchMove} onTouchEnd={touchEnd}>
             <div className={`${prefixCls}__mask`}></div>
             <div className={`${prefixCls}__indicator`}></div>
-            <div className={`${prefixCls}__content`} ref={contentRef} style={{ transform: `translate3d(0px, ${startTranslate}px, 0px)` }}>
+            <div className={`${prefixCls}__content`} ref={contentRef} style={{ transform: `translate3d(0px, ${PxToVw(startTranslate)}vw, 0px)` }}>
                 {data.map((x, i) => (
                     <div
                         className={classNames(`${prefixCls}__item`, {
@@ -163,4 +175,4 @@ function PickerGroup(props: PickerGroupProps) {
     );
 }
 
-export default React.memo(PickerGroup);
+export default React.memo(PickerCol);

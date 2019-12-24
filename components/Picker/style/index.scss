@@ -1,19 +1,20 @@
+$PickerPanel: "weui-picker-panel";
 $Picker: "weui-picker";
-$PickerGroup: "#{$Picker}__group";
+$PickerCol: "weui-picker__col";
 
-.#{$Picker}__bd {
+.#{$PickerPanel} {
     display: flex;
     position: relative;
     background-color: #fff;
-    height: 480px;
     overflow: hidden;
     user-select: none;
+    height: 480px;
     -webkit-user-select: none;
     scroll-behavior: "unset";
     -webkit-overflow-scrolling: none;
 }
 
-.#{$PickerGroup} {
+.#{$PickerCol} {
     flex: 1;
     position: relative;
     height: 100%;
@@ -90,7 +91,6 @@ $PickerGroup: "#{$Picker}__group";
 .#{$Picker}__disabled {
     color: rgba(0, 0, 0, 0.5);
 }
-
 .#{$Picker}__indicator,
 .#{$Picker}__mask {
     position: absolute;
@@ -99,21 +99,6 @@ $PickerGroup: "#{$Picker}__group";
     z-index: 3;
 }
 
-.placeholder {
-    color: rgba(0, 0, 0, 0.3);
-    font-size: 0.9em;
-}
-.picker-panel {
+.weui-picker {
     width: 100%;
-}
-
-.picker-item {
-    .weui-cell__bd {
-        overflow: hidden;
-    }
-    .picker-panel p {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-    }
 }

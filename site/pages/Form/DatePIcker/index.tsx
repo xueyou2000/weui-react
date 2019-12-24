@@ -1,6 +1,6 @@
 import React from "react";
 import { RouteComponentProps, withRouter } from "react-router-dom";
-import { Button, DatePickerPanel, Form, FormItem, ListGroup } from "weui-react";
+import { Button, DatePicker, Form, FormItem, ListGroup } from "weui-react";
 
 function DatePickerDemo({ history }: RouteComponentProps) {
     function change(v: any) {
@@ -18,7 +18,7 @@ function DatePickerDemo({ history }: RouteComponentProps) {
         >
             <ListGroup>
                 <FormItem prop="a" label="日期选择" arrow={true}>
-                    <DatePickerPanel title="选择日期" placeholder="请选择日期" onChange={change} />
+                    <DatePicker visibleValue={[2019, 10, 15]} title="选择日期" placeholder="请选择日期" onChange={change} />
                 </FormItem>
             </ListGroup>
         </Form>

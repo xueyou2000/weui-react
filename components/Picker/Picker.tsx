@@ -1,178 +1,118 @@
-import React, { useRef } from "react";
-import { useControll } from "utils-hooks";
-import Button from "../Button";
+import classNames from "classnames";
+import React, { useState } from "react";
+import "./style/index.scss";
 import { HalfScreenDialog } from "../HalfScreenDialog";
 import { HalfScreenDialogProps } from "../HalfScreenDialog/HalfScreenDialog";
-import { fillingArray } from "../utils/array-utils";
-import { isArray } from "../utils/object-utils";
-import PickerGroup from "./PickerGroup";
-import "./style/index.scss";
+import Button from "../Button";
+import { useControll, GetDrawerContainerFuc, DefineDefaultValue } from "utils-hooks";
+import PickerPanel, { PickerPanelProps } from "./PickerPanel";
+import { getPickerLabel, getSaveValue, normalizedDate, getValueByDefaul } from "./utils";
 
-export interface PickerItem {
-    /**
-     * 显示文本
-     */
-    label: string;
-    /**
-     * 选中值
-     */
-    value: any;
-    /**
-     * 是否禁用
-     */
-    disabled?: boolean;
-    /**
-     * 子集
-     */
-    children?: PickerItem[];
-}
-
-export interface PickerProps extends HalfScreenDialogProps {
-    /**
-     * 附加类名
-     */
-    prefixCls?: string;
-    /**
-     * 根节点的附加类名
-     */
-    className?: string;
-    /**
-     * 内联样式
-     */
-    style?: React.CSSProperties;
-    /**
-     * 数据源
-     */
-    data?: PickerItem[] | PickerItem[][];
-    /**
-     * 选中值
-     */
-    value?: any[];
-    /**
-     * 默认选中值
-     */
-    defaultValue?: any[];
-    /**
-     * 改变值
-     */
-    onChange?: (value: any[]) => void;
-    /**
-     * 列数
-     */
-    cols?: number;
-    /**
-     * 是否级联选择
-     */
-    cascade?: boolean;
+export interface PickerProps extends HalfScreenDialogProps, PickerPanelProps {
     /**
      * 确定按钮点击
      */
-    onConfirm?: (value: any[]) => void;
+    onConfirm?: (value: any[], label: string) => void;
+    /**
+     * 右侧图片
+     */
+    addon?: React.ReactNode;
+    /**
+     * 占位符
+     */
+    placeholder?: string;
+    /**
+     * 渲染的Picker组件
+     */
+    PickerComponent?: (props: PickerPanelProps) => JSX.Element;
+    /**
+     * 返回一个容器来装载抽屉
+     * @description 默认为body内创建一个div作为容器
+     */
+    getContainer?: HTMLElement | GetDrawerContainerFuc;
 }
 
-function getValByArray(i: number, array: any[]) {
-    if (i < array.length) {
-        return array[i];
+const Picker = React.forwardRef((props: PickerProps, ref: React.MutableRefObject<any>) => {
+    const {
+        prefixCls = "weui-picker",
+        className,
+        style,
+        onConfirm,
+        addon,
+        data,
+        value,
+        defaultValue,
+        onChange,
+        cols,
+        singleLabel,
+        separator,
+        labelValue,
+        cascade,
+        visibleValue,
+        onVisibleValue,
+        placeholder = "请选择",
+        PickerComponent = PickerPanel,
+        getContainer,
+        ...halfScreenProps
+    } = props;
+    const pickerProps: PickerPanelProps = { data, cols, singleLabel, separator, labelValue, cascade, visibleValue, onVisibleValue };
+    if ("value" in props) {
+        pickerProps.value = value;
     } else {
-        return null;
+        pickerProps.defaultValue = defaultValue;
     }
-}
 
-function Picker(props: PickerProps) {
-    const { prefixCls = "weui-picker", className, style, data, value, defaultValue, onChange, cols = 1, cascade = false, onConfirm, ...rest } = props;
-    const [val, setVal, isControll] = useControll<any[]>(props, "value", "defaultValue", fillingArray(cols, null));
-    // 解决受控模式下,外部传入空导致异常
-    const saveVal = val || fillingArray(cols, null);
-    const lastVal = useRef(saveVal);
+    const [visible, setVisible, isVisibleControll] = useControll(props, "visible", "defaultVisible");
+    const [label, setLabel] = useState<string>(getPickerLabel(DefineDefaultValue(props, "value", "defaultValue"), data, { singleLabel, separator, labelValue, cascade }) || placeholder);
 
-    function changeValue(newVal: any[]) {
-        if (!isControll) {
-            setVal(newVal);
+    function changeVisible(show: boolean) {
+        if (!isVisibleControll) {
+            setVisible(show);
+        }
+        if (props.onVisibleChange) {
+            props.onVisibleChange(show);
+        }
+    }
+
+    function changeHandle(vals: any[], label: string) {
+        setLabel(label);
+        if (onChange) {
+            onChange(vals, label);
+        }
+    }
+
+    function confirmHandle() {
+        // 如果将空值, 取默认值.(视觉上选中的值)
+        const saveVals = getSaveValue(DefineDefaultValue(props, "value", "defaultValue"), cols, visibleValue);
+        let _data = normalizedDate(data, saveVals, cascade);
+        let pickerVals: any[] = [];
+        if (cascade) {
+            pickerVals = _data.map((x, i) => (saveVals[i] === undefined || saveVals[i] === null ? x[0].value : saveVals[i]));
+        } else {
+            pickerVals = saveVals.map((x, i) => getValueByDefaul(x, i, _data));
+        }
+        const _label: string = getPickerLabel(pickerVals, data, { singleLabel, separator, labelValue, cascade });
+        setLabel(_label);
+        if (onConfirm) {
+            onConfirm(pickerVals, _label);
         }
         if (onChange) {
-            onChange(newVal);
-        }
-    }
-
-    function changeColValue(colVal: any, index: number) {
-        if (cascade) {
-            // 级联时，当前列改变了，后面的值都需要清空
-            lastVal.current = lastVal.current.map((x, i) => {
-                if (i < index) {
-                    return x;
-                } else if (i === index) {
-                    return colVal;
-                } else {
-                    return null;
-                }
-            });
-            changeValue(lastVal.current);
-        } else {
-            lastVal.current[index] = colVal;
-            changeValue(saveVal.map((x, i) => (i === index ? colVal : x)));
-        }
-    }
-
-    function confirmHandle(i: number) {
-        if (onConfirm) {
-            onConfirm(lastVal.current);
+            onChange(pickerVals, _label);
         }
         return Promise.resolve();
     }
 
-    function createPickerGroups() {
-        if (!data) {
-            return null;
-        }
-
-        let groups = [];
-        // 多列模式
-        const multiMode = data.length > 0 && isArray(data[0]);
-        // 归一化数据源， 将 多列数据, 单列数据 统一成  PickerItem[][] 多列格式
-        let _data = multiMode ? (data as PickerItem[][]) : ([data] as PickerItem[][]);
-        if (cascade) {
-            // 根据当前所选值，创建级联数据
-            _data = createCascadeData(data as PickerItem[], saveVal);
-        }
-        for (let i = 0; i < _data.length; ++i) {
-            groups.push(<PickerGroup key={i} cascade={cascade} data={_data[i]} index={i} value={getValByArray(i, saveVal)} onChange={changeColValue} passive={!!defaultValue} />);
-        }
-
-        return groups;
-    }
-
     return (
-        <HalfScreenDialog {...rest} footer={[<Button>确定</Button>]} onClick={confirmHandle}>
-            <div className={`${prefixCls}__bd`}>{createPickerGroups()}</div>
-        </HalfScreenDialog>
+        <div className={classNames(prefixCls, className)} style={style}>
+            <div ref={ref} onClick={() => changeVisible(true)}>
+                {label}
+                {addon}
+            </div>
+            <HalfScreenDialog {...halfScreenProps} visible={visible} onVisibleChange={changeVisible} footer={[<Button>确定</Button>]} onClick={confirmHandle}>
+                <PickerComponent {...pickerProps} onChange={changeHandle} />
+            </HalfScreenDialog>
+        </div>
     );
-}
+});
 
 export default React.memo(Picker);
-
-/**
- * 创建级联数据
- * @param data
- * @param vals
- */
-export function createCascadeData(data: PickerItem[], vals: any[]) {
-    // vals [2, null, null]
-    const cascadeData: PickerItem[][] = [data];
-
-    for (let i = 1; i < vals.length; ++i) {
-        const v = vals[i - 1];
-        if (v !== null) {
-            const prev: PickerItem = cascadeData[i - 1].find((x) => x.value === v);
-            if (prev && prev.children && prev.children.length > 0) {
-                cascadeData.push(prev.children);
-            }
-        } else {
-            // 使用默认第一个作为默认
-            const prev: PickerItem = cascadeData[i - 1][0];
-            if (prev && prev.children && prev.children.length > 0) {
-                cascadeData.push(prev.children);
-            }
-        }
-    }
-    return cascadeData;
-}

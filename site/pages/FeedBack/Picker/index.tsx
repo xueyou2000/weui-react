@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Page from "site/components/Page";
-import { Picker, PickerListItem, PickerPanel, Button, FormItem, Form } from "weui-react";
-import { PickerItem } from "../../../../components/Picker/Picker";
+import { PickerPanel, Button, FormItem, Form, PickerItem, Picker } from "weui-react";
+import cityData from "./citys-data.json";
 
 // 级联数据
 const pickerData: PickerItem[] = [
@@ -162,15 +162,16 @@ function PickerDemo() {
                 }
             >
                 <FormItem defaultValue={[3]} prop="merchantType" label="单列Picker" arrow={true}>
-                    <PickerPanel cols={1} placeholder="请选择票据类型" title="单列Picker" data={pickerDataA} />
+                    <Picker cols={1} placeholder="请选择票据类型" title="单列Picker" data={pickerDataA} />
                 </FormItem>
 
                 <FormItem defaultValue={[103, 204]} prop="merchantType2" label="双列数据" arrow={true}>
-                    <PickerPanel cols={2} placeholder="请选择票据类型" title="双列数据" data={pickerDataB} />
+                    <Picker cols={2} placeholder="请选择票据类型" title="双列数据" data={pickerDataB} />
                 </FormItem>
 
-                <FormItem defaultValue={[2, 202]} prop="merchantType3" label="级联数据" arrow={true}>
-                    <PickerPanel cascade={true} cols={2} placeholder="请选择票据类型" title="级联数据" data={pickerData} />
+                <FormItem prop="merchantType3" label="级联数据" arrow={true}>
+                    <Picker visibleValue={["2200", "2250", "2252"]} title="请选择" cascade={true} cols={3} data={cityData} onChange={(vals, label) => console.log("选中值", vals, "label", label)} />
+                    {/* <Picker cascade={true} cols={2} placeholder="请选择票据类型" title="级联数据" data={pickerData} /> */}
                 </FormItem>
             </Form>
         </Page>

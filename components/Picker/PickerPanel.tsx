@@ -1,114 +1,118 @@
-import React, { useEffect, useState } from "react";
-import { GetDrawerContainerFuc, useControll, usePortal } from "utils-hooks";
-import { fillingArray } from "../utils/array-utils";
-import { isArray } from "../utils/object-utils";
-import Picker, { createCascadeData, PickerItem, PickerProps } from "./Picker";
+import classNames from "classnames";
+import React, { useRef } from "react";
+import { useControll } from "utils-hooks";
+import PickerCol from "./PickerCol";
 import "./style/index.scss";
+import { getPickerLabel, normalizedDate, PickerItem, PickerLabelOption, getValueByDefaul, getSaveValue } from "./utils";
 
-export interface PickerPanelProps extends PickerProps {
+export interface PickerPanelProps extends PickerLabelOption {
     /**
-     * 占位符
+     * 附加类名
      */
-    placeholder?: string;
+    prefixCls?: string;
     /**
-     * 是否只显示最终一级的label
+     * 根节点的附加类名
      */
-    singleLabel?: boolean;
+    className?: string;
     /**
-     * label分隔符
-     * 比如日期: 2019-10-08
-     * 比如类别: 食品/熟食
+     * 内联样式
      */
-    separator?: string;
+    style?: React.CSSProperties;
     /**
-     * 渲染的Picker组件
+     * 数据源
      */
-    PickerComponent?: (props: PickerProps) => JSX.Element;
+    data?: PickerItem[] | PickerItem[][];
     /**
-     * 返回一个容器来装载抽屉
-     * @description 默认为body内创建一个div作为容器
+     * 选中值
      */
-    getContainer?: HTMLElement | GetDrawerContainerFuc;
+    value?: any[];
     /**
-     * 是否不使用点击时间
+     * 默认选中值
      */
-    disabledClick?: boolean;
+    defaultValue?: any[];
+    /**
+     * 改变值
+     */
+    onChange?: (value: any[], label: string) => void;
+    /**
+     * 列数
+     */
+    cols?: number;
+    /**
+     * 默认可视值
+     */
+    visibleValue?: any[];
+    /**
+     * 当前可视值
+     */
+    onVisibleValue?: (val: any, i: number) => void;
 }
 
-export function getPickerLabel(pickerValues: any[], data: PickerItem[] | PickerItem[][], cascade = false, separator = "/") {
-    const pickerItems = [];
+/**
+ * Picker面板
+ */
+function PickerPanel(props: PickerPanelProps) {
+    const { prefixCls = "weui-picker-panel", className, style, data = [], cols = 1, cascade = false, singleLabel = false, separator = "/", labelValue = false, onChange, visibleValue, onVisibleValue } = props;
+    const [value, setValue, isControll] = useControll<any[]>(props, "value", "defaultValue");
+    const saveVals = getSaveValue(value, cols, visibleValue);
+    let _data = normalizedDate(data, saveVals, cascade);
 
-    // 多列模式
-    const multiMode = data.length > 0 && isArray(data[0]);
-    // 归一化数据源， 将 多列数据, 单列数据 统一成  PickerItem[][] 多列格式
-    let _data = multiMode ? (data as PickerItem[][]) : ([data] as PickerItem[][]);
-    if (cascade) {
-        // 根据当前所选值，创建级联数据
-        _data = createCascadeData(data as PickerItem[], pickerValues);
-    }
-
-    for (let i = 0; i < _data.length; ++i) {
-        const item = _data[i].find((x) => x.value === pickerValues[i]);
-        pickerItems.push(item || null);
-    }
-
-    return pickerItems.reduce((prev, current) => {
-        const colLabel = current ? current.label : "";
-        return prev ? `${prev}${separator}${colLabel}` : colLabel;
-    }, "");
-}
-
-const PickerPanel = React.forwardRef((props: PickerPanelProps, ref: React.MutableRefObject<any>) => {
-    const { placeholder = "请选择", onChange, singleLabel, separator = "/", getContainer, PickerComponent = Picker, disabledClick, ...rest } = props;
-    const [vals, setVals] = useState(fillingArray(props.cols, null));
-    const [visible, setVisible, isVisibleControll] = useControll(props, "visible", "defaultVisible");
-    const [renderPortal] = usePortal("", getContainer);
-
-    function changeVisible(show: boolean) {
-        if (!isVisibleControll) {
-            setVisible(show);
+    function changeValue(val: any[]) {
+        if (!isControll) {
+            setValue(val);
         }
-        if (props.onVisibleChange) {
-            props.onVisibleChange;
-            show;
-        }
-    }
-
-    function showHandle() {
-        if (!disabledClick) {
-            changeVisible(true);
-        }
-    }
-
-    function changeHandle(value: any[]) {
         if (onChange) {
-            onChange(value);
+            onChange(val, getPickerLabel(val, data, { singleLabel, separator, labelValue, cascade }));
         }
-        setVals(value);
     }
 
-    function _getPickerLabel() {
-        const { data, cascade } = props;
-        if (!data) {
+    /**
+     * picker列改变
+     * @param val
+     * @param i
+     */
+    function pickerColChangeHandle(val: any, index: number) {
+        if (cascade) {
+            let vals: any[] = [];
+            // 上级的 childer
+            let children: PickerItem[] = data as PickerItem[];
+            // 级联后续的 data 都会变, 所以不能根据 _data 归一化数据去获取任何东西
+            for (let i = 0; i < cols; ++i) {
+                if (i < index) {
+                    // 之前的, 为空的默认, 存在值则不进行设置
+                    vals[i] = saveVals[i] === undefined || saveVals[i] === null ? children[i].value : saveVals[i];
+                } else if (i === index) {
+                    vals[i] = val;
+                } else {
+                    // 之后的 为空的默认, 存在则不进行设置
+                    vals[i] = children.some((x) => x.value === saveVals[i]) ? saveVals[i] : children[0].value;
+                }
+                children = children.find((x) => x.value === vals[i]).children;
+            }
+            changeValue(vals);
+        } else {
+            changeValue(saveVals.map((x, i) => (i === index ? val : getValueByDefaul(x, index, _data))));
+        }
+    }
+
+    function renderPickerCols() {
+        if (!data || data.length <= 0) {
             return null;
         }
-        return getPickerLabel(vals, data, cascade, separator);
+        let groups = [];
+
+        for (let i = 0; i < _data.length; ++i) {
+            groups.push(<PickerCol key={i} index={i} data={_data[i]} value={saveVals[i]} onChange={pickerColChangeHandle} onVisibleValue={onVisibleValue} />);
+        }
+
+        return groups;
     }
 
-    useEffect(() => {
-        if (props.value) {
-            setVals(props.value);
-        }
-    }, [props.value]);
-
     return (
-        <div className="picker-panel">
-            <p ref={ref} onClick={showHandle}>
-                {!vals || vals[0] === null ? <span className="placeholder">{placeholder}</span> : _getPickerLabel()}
-            </p>
-            {renderPortal(<PickerComponent {...rest} visible={visible} onVisibleChange={changeVisible} onChange={changeHandle} />)}
+        <div className={classNames(prefixCls, className)} style={style}>
+            {renderPickerCols()}
         </div>
     );
-});
+}
 
 export default React.memo(PickerPanel);

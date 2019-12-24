@@ -1,8 +1,9 @@
 import React from "react";
 import { dateFormatParse, daysInMonth } from "utils-dom";
-import { Picker } from "../Picker";
-import { PickerItem, PickerProps } from "../Picker/Picker";
+import { Picker, PickerItem } from "../Picker";
+import { PickerProps } from "../Picker/Picker";
 import "./style/index.scss";
+import classNames from "classnames";
 
 export interface DatePickerProps extends PickerProps {
     /**
@@ -46,9 +47,10 @@ export function createCascadeDates(start: number, end: number): PickerItem[] {
     return data;
 }
 
-function DatePicker(props: DatePickerProps) {
-    const { start = today.getFullYear() - 20, end = today.getFullYear() + 30, ...rest } = props;
-    return <Picker {...rest} value={props.value || todayValue} defaultValue={props.defaultValue || todayValue} data={createCascadeDates(start, end)} cascade={true} cols={3} />;
-}
+const DatePicker = React.forwardRef((props: DatePickerProps, ref: React.MutableRefObject<any>) => {
+    const { start = today.getFullYear() - 20, end = today.getFullYear() + 30, value, defaultValue, ...rest } = props;
+
+    return <Picker {...rest} className={classNames("weui-date-picker", props.className)} ref={ref} data={createCascadeDates(start, end)} cascade={true} cols={3} />;
+});
 
 export default React.memo(DatePicker);
