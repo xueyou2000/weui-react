@@ -49,9 +49,9 @@ export function createCascadeDates(start: number, end: number): PickerItem[] {
 }
 
 const DatePicker = React.forwardRef((props: DatePickerProps, ref: React.MutableRefObject<any>) => {
-    const { start = today.getFullYear() - 20, end = today.getFullYear() + 30, value, defaultValue, placeholder = getLocal().DatePicker.placeholder, ...rest } = props;
+    const { start = today.getFullYear() - 20, end = today.getFullYear() + 30, value, defaultValue, placeholder = getLocal().DatePicker.placeholder, cols = 3, ...rest } = props;
 
-    return <Picker {...rest} className={classNames("weui-date-picker", props.className)} ref={ref} data={createCascadeDates(start, end)} cascade={true} cols={3} />;
+    return <Picker {...rest} className={classNames("weui-date-picker", props.className)} ref={ref} data={createCascadeDates(start, end)} cascade={true} cols={cols} />;
 });
 
 export default React.memo(DatePicker);

@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.1.0 (Tue Dec 24 2019)
+
+-   修复`Picker`和`DatePicker`设置`cols`无效问题
+
 ## 1.0.1 (Tue Dec 24 2019)
 
 -   更新`xy-form`版本, 避免冲突. 不同版本的`FormContext`不一样
