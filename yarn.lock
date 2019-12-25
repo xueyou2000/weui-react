@@ -9565,10 +9565,10 @@ xy-badge@^0.1.0:
     react-dom "^16.12.0"
     utils-hooks "^0.0.71"
 
-xy-form@^0.5.0:
-  version "0.5.0"
-  resolved "https://registry.npm.taobao.org/xy-form/download/xy-form-0.5.0.tgz#e84b78fe7c323570b82dcab8689ab74d44a27295"
-  integrity sha1-6Et4/nwyNXC4Lcq4aJq3TUSicpU=
+xy-form@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.npm.taobao.org/xy-form/download/xy-form-0.6.0.tgz#969d1a6209a579fbbad6e2560462894929cd146d"
+  integrity sha1-lp0aYgmlefu61uJWBGKJSSnNFG0=
   dependencies:
     classnames "^2.2.6"
     lodash-es "^4.17.15"
