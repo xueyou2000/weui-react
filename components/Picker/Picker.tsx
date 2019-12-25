@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { DefineDefaultValue, GetDrawerContainerFuc, useControll } from "utils-hooks";
 import Button from "../Button";
 import { HalfScreenDialog } from "../HalfScreenDialog";
@@ -63,6 +63,8 @@ const Picker = React.forwardRef((props: PickerProps, ref: React.MutableRefObject
         pickerProps.defaultValue = defaultValue;
     }
 
+    const lastPickerVals = useRef<any[]>(null);
+    const lastPickerLabel = useRef<string>(null);
     const [visible, setVisible, isVisibleControll] = useControll(props, "visible", "defaultVisible");
     const [label, setLabel] = useState<string>(getPickerLabel(DefineDefaultValue(props, "value", "defaultValue"), data, { singleLabel, separator, labelValue, cascade }) || placeholder);
 
@@ -76,6 +78,8 @@ const Picker = React.forwardRef((props: PickerProps, ref: React.MutableRefObject
     }
 
     function changeHandle(vals: any[], label: string) {
+        lastPickerVals.current = vals;
+        lastPickerLabel.current = label;
         setLabel(label);
         if (onChange) {
             onChange(vals, label);
@@ -83,22 +87,31 @@ const Picker = React.forwardRef((props: PickerProps, ref: React.MutableRefObject
     }
 
     function confirmHandle() {
-        // 如果将空值, 取默认值.(视觉上选中的值)
-        const saveVals = getSaveValue(DefineDefaultValue(props, "value", "defaultValue"), cols, visibleValue);
-        let _data = normalizedDate(data, saveVals, cascade);
-        let pickerVals: any[] = [];
-        if (cascade) {
-            pickerVals = _data.map((x, i) => (saveVals[i] === undefined || saveVals[i] === null ? x[0].value : saveVals[i]));
+        let pickerVals: any[];
+        let label: string;
+
+        if (lastPickerVals.current) {
+            pickerVals = lastPickerVals.current;
+            label = lastPickerLabel.current;
         } else {
-            pickerVals = saveVals.map((x, i) => getValueByDefaul(x, i, _data));
+            // 如果将空值, 取默认值.(视觉上选中的值)
+            const saveVals = getSaveValue(DefineDefaultValue(props, "value", "defaultValue"), cols, visibleValue);
+            let _data = normalizedDate(data, saveVals, cascade);
+
+            if (cascade) {
+                pickerVals = _data.map((x, i) => (saveVals[i] === undefined || saveVals[i] === null ? x[0].value : saveVals[i]));
+            } else {
+                pickerVals = saveVals.map((x, i) => getValueByDefaul(x, i, _data));
+            }
+            label = getPickerLabel(pickerVals, data, { singleLabel, separator, labelValue, cascade });
         }
-        const _label: string = getPickerLabel(pickerVals, data, { singleLabel, separator, labelValue, cascade });
-        setLabel(_label);
+
+        setLabel(label);
         if (onConfirm) {
-            onConfirm(pickerVals, _label);
+            onConfirm(pickerVals, label);
         }
         if (onChange) {
-            onChange(pickerVals, _label);
+            onChange(pickerVals, label);
         }
         return Promise.resolve();
     }
