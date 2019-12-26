@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.4.1 (Thu Dec 26 2019)
+
+-   同步`xy-form`版本至`0.7.0`
+
 ## 1.4.0 (Wed Dec 25 2019)
 
 -   修复`Picker`组件`Confirm`事件的值不是最新的问题
