@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.4.2 (Fri Dec 27 2019)
+
+-   `Stripe`转发`ref`
+
 ## 1.4.1 (Thu Dec 26 2019)
 
 -   同步`xy-form`版本至`0.7.0`
