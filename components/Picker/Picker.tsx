@@ -23,6 +23,10 @@ export interface PickerProps extends HalfScreenDialogProps, PickerPanelProps {
      */
     placeholder?: string;
     /**
+     * 是否禁用
+     */
+    disabled?: boolean;
+    /**
      * 渲染的Picker组件
      */
     PickerComponent?: (props: PickerPanelProps) => JSX.Element;
@@ -39,6 +43,7 @@ const Picker = React.forwardRef((props: PickerProps, ref: React.MutableRefObject
         className,
         style,
         onConfirm,
+        disabled,
         addon,
         data,
         value,
@@ -86,6 +91,12 @@ const Picker = React.forwardRef((props: PickerProps, ref: React.MutableRefObject
         }
     }
 
+    function showHandle() {
+        if (!disabled) {
+            changeVisible(true);
+        }
+    }
+
     function confirmHandle() {
         let pickerVals: any[];
         let label: string;
@@ -117,8 +128,8 @@ const Picker = React.forwardRef((props: PickerProps, ref: React.MutableRefObject
     }
 
     return (
-        <div className={classNames(prefixCls, className)} style={style}>
-            <div ref={ref} onClick={() => changeVisible(true)}>
+        <div className={classNames(prefixCls, className, { [`${prefixCls}__disabled`]: disabled })} style={style}>
+            <div ref={ref} onClick={showHandle}>
                 {label}
                 {addon}
             </div>

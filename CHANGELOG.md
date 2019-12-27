@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.5.0 (Fri Dec 27 2019)
+
+-   `Picker`增加`disabled`属性
+
 ## 1.4.2 (Fri Dec 27 2019)
 
 -   `Stripe`转发`ref`
