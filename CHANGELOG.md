@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.5.1 (Fri Dec 27 2019)
+
+-   `Picker`当`value`从外部触发改变, 而不是内部选中改变时, 也要更新`label`文本
+
 ## 1.5.0 (Fri Dec 27 2019)
 
 -   `Picker`增加`disabled`属性

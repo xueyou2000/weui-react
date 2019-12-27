@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { DefineDefaultValue, GetDrawerContainerFuc, useControll } from "utils-hooks";
 import Button from "../Button";
 import { HalfScreenDialog } from "../HalfScreenDialog";
@@ -72,6 +72,10 @@ const Picker = React.forwardRef((props: PickerProps, ref: React.MutableRefObject
     const lastPickerLabel = useRef<string>(null);
     const [visible, setVisible, isVisibleControll] = useControll(props, "visible", "defaultVisible");
     const [label, setLabel] = useState<string>(getPickerLabel(DefineDefaultValue(props, "value", "defaultValue"), data, { singleLabel, separator, labelValue, cascade }) || placeholder);
+
+    useEffect(() => {
+        setLabel(getPickerLabel(DefineDefaultValue(props, "value", "defaultValue"), data, { singleLabel, separator, labelValue, cascade }) || placeholder);
+    }, [value]);
 
     function changeVisible(show: boolean) {
         if (!isVisibleControll) {
