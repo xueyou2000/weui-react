@@ -4,6 +4,8 @@ $GridWrap: "#{$GridItem}s";
 .#{$GridWrap} {
     position: relative;
     overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
 
     &:before {
         content: " ";
@@ -42,6 +44,8 @@ $GridWrap: "#{$GridItem}s";
     padding: 40px 20px;
     width: 33.33333333%;
     box-sizing: border-box;
+    flex: 1;
+    flex-basis: 33.333%;
 
     &:before {
         content: " ";
