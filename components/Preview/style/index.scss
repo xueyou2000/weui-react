@@ -105,6 +105,7 @@ $PreviewPrefix: "weui-form-preview";
     overflow: hidden;
     word-break: normal;
     word-wrap: break-word;
+    min-height: 2em;
 }
 
 .#{$PreviewPrefix}__btn {

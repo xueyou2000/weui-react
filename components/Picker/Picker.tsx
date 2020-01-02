@@ -75,7 +75,7 @@ const Picker = React.forwardRef((props: PickerProps, ref: React.MutableRefObject
 
     useEffect(() => {
         setLabel(getPickerLabel(DefineDefaultValue(props, "value", "defaultValue"), data, { singleLabel, separator, labelValue, cascade }) || placeholder);
-    }, [value]);
+    }, [value, data]);
 
     function changeVisible(show: boolean) {
         if (!isVisibleControll) {

@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.6.0 (Thu Jan 02 2020)
+
+-   修复`Picker`当`data`数据源变动时,`label`没有更新
+-   修复`DatePicker`组件的月份是从`1-12`而不是`0-11`的问题
+-   优化`Preview`样式, 避免没值得行坍塌
+
 ## 1.5.1 (Fri Dec 27 2019)
 
 -   `Picker`当`value`从外部触发改变, 而不是内部选中改变时, 也要更新`label`文本
