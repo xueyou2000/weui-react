@@ -17,7 +17,7 @@ function DatePickerDemo({ history }: RouteComponentProps) {
             }
         >
             <ListGroup>
-                <FormItem defaultValue={[2020, 0, 2]} prop="a" label="日期选择" arrow={true}>
+                <FormItem defaultValue={[2020, 1, 2]} prop="a" label="日期选择" arrow={true}>
                     <DatePicker title="选择日期" placeholder="请选择日期" onConfirm={(vals, label) => console.log("onConfirm ", vals, label)} onChange={change} />
                 </FormItem>
             </ListGroup>

@@ -22,12 +22,12 @@ export interface DatePickerProps extends PickerProps {
 export const today = new Date();
 export const todayValue = [today.getFullYear(), today.getMonth(), today.getDate()];
 
-export function createRange(start: number, end: number, suffix: string, createChildren?: (i: number) => PickerItem[], isMonth?: boolean) {
+export function createRange(start: number, end: number, suffix: string, createChildren?: (i: number) => PickerItem[]) {
     const data: PickerItem[] = [];
     for (let i = start; i <= end; ++i) {
         data.push({
-            label: (isMonth ? i + 1 : i) + suffix,
-            value: isMonth ? i + 1 : i,
+            label: i + suffix,
+            value: i,
             children: createChildren ? createChildren(i) : null,
         });
     }
@@ -43,7 +43,7 @@ export function createCascadeDates(start: number, end: number): PickerItem[] {
     const data = createRange(start, end, getLocal().DatePicker.year);
     data.forEach((yearItem) => {
         const year = yearItem.value;
-        yearItem.children = createRange(0, 11, getLocal().DatePicker.month, (month: number) => createRange(1, daysInMonth(dateFormatParse(`${year}-${month}-1`)), getLocal().DatePicker.day), true);
+        yearItem.children = createRange(1, 12, getLocal().DatePicker.month, (month: number) => createRange(1, daysInMonth(dateFormatParse(`${year}-${month}-1`)), getLocal().DatePicker.day));
     });
     return data;
 }
