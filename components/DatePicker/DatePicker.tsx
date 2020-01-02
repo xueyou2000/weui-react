@@ -27,7 +27,7 @@ export function createRange(start: number, end: number, suffix: string, createCh
     for (let i = start; i <= end; ++i) {
         data.push({
             label: (isMonth ? i + 1 : i) + suffix,
-            value: i,
+            value: isMonth ? i + 1 : i,
             children: createChildren ? createChildren(i) : null,
         });
     }

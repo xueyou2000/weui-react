@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.6.1 (Thu Jan 02 2020)
+
+-   `DatePicker`月份的值也要+1
+
 ## 1.6.0 (Thu Jan 02 2020)
 
 -   修复`Picker`当`data`数据源变动时,`label`没有更新
