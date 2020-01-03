@@ -45,7 +45,7 @@ $Form: "weui-form";
 }
 
 @media screen and (min-height: 438px) {
-    .#{$Form}__extra-area {
+    .#{$Form}__fixed .#{$Form}__extra-area {
         position: fixed;
         left: 0;
         bottom: 0;

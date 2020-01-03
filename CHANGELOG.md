@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.6.2 (Fri Jan 03 2020)
+
+-   `Form`增加`fixed`参数, 改变默认页脚悬浮行为
+
 ## 1.6.1 (Thu Jan 02 2020)
 
 -   `DatePicker`月份的值也要+1

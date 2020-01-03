@@ -31,6 +31,10 @@ export interface WeFormProps extends FormProps {
      */
     extra?: React.ReactNode;
     /**
+     * 扩展页脚是否悬浮(fixed)
+     */
+    fixed?: boolean;
+    /**
      * 内容
      */
     children?: React.ReactNode;
@@ -45,10 +49,10 @@ export interface WeFormProps extends FormProps {
 }
 
 function WeForm(props: WeFormProps) {
-    const { prefixCls = "weui-form", className, style, title, desc, extra, opr, tips, trigger = ValidateTrigger.blur, children, ...rest } = props;
+    const { prefixCls = "weui-form", className, style, title, desc, extra, opr, tips, trigger = ValidateTrigger.blur, fixed = false, children, ...rest } = props;
 
     return (
-        <div className={classNames(prefixCls, className)} style={style}>
+        <div className={classNames(prefixCls, className, { [`${prefixCls}__fixed`]: fixed })} style={style}>
             <Form {...rest} trigger={trigger} onValidateFail={formValidateFailHandle}>
                 <div className={`${prefixCls}__text-area`}>
                     <h2 className={`${prefixCls}__title`}>{title}</h2>
