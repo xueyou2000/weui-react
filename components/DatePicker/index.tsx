@@ -1,3 +1,4 @@
 import DatePicker from "./DatePicker";
+import { PopupDatePicker } from "./PopupDatePicker";
 
-export { DatePicker };
+export { DatePicker, PopupDatePicker };

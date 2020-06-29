@@ -1,5 +1,10 @@
 # Change Log
 
+## 1.6.4 (Mon Jun 29 2020)
+
+-   增加`PopupDatePicker`方法, 主动弹出日期框
+-   增加`PopupPicker`方法, 主动弹出选择框
+
 ## 1.6.3 (Mon Jun 29 2020)
 
 -   `Button`增加`text`样式
