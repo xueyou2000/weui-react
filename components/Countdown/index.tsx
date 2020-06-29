@@ -122,7 +122,7 @@ function Countdown(props: CountDownProps) {
         } else {
             label = loading ? getLocal().Countdown.sending : status === CountdownStatusEnum.COMPLETE ? finish : (children as any).props.children;
         }
-        return React.cloneElement(children as any, { loading, disabled, onClick: start, className: "weui-vcode-btn", children: label });
+        return React.cloneElement(children as any, { loading, disabled, onClick: start, className: classNames("weui-vcode-btn", (children as any).props.className), children: label });
     }
 
     useEffect(() => {

@@ -35,6 +35,12 @@ $Button: "weui-btn";
 .#{$Button}_long {
     width: 100%;
 }
+.#{$Button}_inline {
+    width: auto;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 2;
+}
 
 .#{$Button}.#{$Button}_primary {
     background-color: #07c160;
@@ -69,6 +75,24 @@ $Button: "weui-btn";
     &:not(.#{$Button}_disabled):active {
         color: #d9d9d9;
         background-color: darken($--color-error, 10%);
+    }
+}
+.#{$Button}.#{$Button}_text {
+    background-color: transparent;
+    color: $--primary-color;
+    padding: 10px;
+    font-size: 28px;
+
+    &:not(.#{$Button}_disabled):visited {
+        color: $--color-dark;
+    }
+
+    &:not(.#{$Button}_disabled):active {
+        color: $--color-dark;
+    }
+
+    &.#{$Button}_disabled {
+        background: transparent;
     }
 }
 

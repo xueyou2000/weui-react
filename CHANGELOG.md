@@ -1,5 +1,10 @@
 # Change Log
 
+## 1.6.3 (Mon Jun 29 2020)
+
+-   `Button`增加`text`样式
+-   修复`Countdown`clone 时候的`className`丢失
+
 ## 1.6.2 (Fri Jan 03 2020)
 
 -   `Form`增加`fixed`参数, 改变默认页脚悬浮行为

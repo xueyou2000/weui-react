@@ -3,7 +3,7 @@ import React from "react";
 import Loading from "../Icon/Loading";
 import "./style/index.scss";
 
-export type ButtonType = "primary" | "default" | "danger";
+export type ButtonType = "primary" | "default" | "danger" | "text";
 
 export interface ButtonProps {
     /**
@@ -39,6 +39,10 @@ export interface ButtonProps {
      */
     disabled?: boolean;
     /**
+     * 内联模式
+     */
+    inline?: boolean;
+    /**
      * click事件
      */
     onClick?: (event: React.MouseEvent<HTMLElement>) => void;
@@ -48,11 +52,12 @@ export interface ButtonProps {
  * 按钮
  */
 function Button(props: ButtonProps) {
-    const { prefixCls = "weui-btn", className, style, children, type = "default", long, loading, disabled, onClick } = props;
+    const { prefixCls = "weui-btn", className, style, children, type = "default", long, loading, disabled, onClick, inline } = props;
     const classString = classNames(prefixCls, className, `${prefixCls}_${type}`, {
         [`${prefixCls}_disabled`]: disabled,
         [`${prefixCls}_loading`]: loading,
         [`${prefixCls}_long`]: long,
+        [`${prefixCls}_inline`]: inline,
     });
 
     function clickHandle(event: React.MouseEvent<HTMLElement>) {

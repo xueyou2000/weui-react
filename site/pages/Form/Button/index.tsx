@@ -26,6 +26,16 @@ function ButtonDemo() {
                 <Button type="danger" disabled={true}>
                     警告操作
                 </Button>
+
+                <Button type="text" inline={true}>
+                    文本按钮
+                </Button>
+                <Button type="text" inline={true} loading={true}>
+                    文本按钮(加载)
+                </Button>
+                <Button type="text" inline={true} disabled={true}>
+                    文本按钮(禁用)
+                </Button>
             </div>
         </Page>
     );
