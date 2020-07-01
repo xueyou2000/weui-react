@@ -22,13 +22,17 @@ export interface PreviewItemProps {
      * 标题
      */
     title: React.ReactNode;
+    /**
+     * 点击事件
+     */
+    onClick?: () => void;
 }
 
 function PreviewItem(props: PreviewItemProps) {
-    const { prefixCls = "weui-form-preview__", className, style, children, title } = props;
+    const { prefixCls = "weui-form-preview__", className, style, children, title, onClick } = props;
 
     return (
-        <div className={className} style={style}>
+        <div className={className} style={style} onClick={onClick}>
             <label className={`${prefixCls}label`}>{title}</label>
             <span className={`${prefixCls}value`}>{children}</span>
         </div>

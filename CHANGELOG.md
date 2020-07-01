@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.6.5 (Mon Jun 29 2020)
+
+-   `PreviewItem`增加点击事件
+
 ## 1.6.4 (Mon Jun 29 2020)
 
 -   增加`PopupDatePicker`方法, 主动弹出日期框

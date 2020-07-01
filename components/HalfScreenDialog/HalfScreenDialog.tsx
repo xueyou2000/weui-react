@@ -44,13 +44,17 @@ export interface HalfScreenDialogProps extends PopupProps {
      */
     more?: boolean;
     /**
+     * 右上角扩展内容
+     */
+    exted?: React.ReactNode;
+    /**
      * 更多点击事件
      */
     onMoreClick?: () => void;
 }
 
 function HalfScreenDialog(props: HalfScreenDialogProps) {
-    const { prefixCls = "weui-half-screen-dialog", className, style, title, subTitle, children, footer = [], more, onClick, onMoreClick, ...rest } = props;
+    const { prefixCls = "weui-half-screen-dialog", className, style, title, subTitle, children, footer = [], more, onClick, onMoreClick, exted, ...rest } = props;
     const [loading, setLoading] = useState(false);
     let closeFunc: Function;
 
@@ -91,6 +95,11 @@ function HalfScreenDialog(props: HalfScreenDialogProps) {
                         <strong className={`${prefixCls}__title`}>{title}</strong>
                         {subTitle && <span className={`${prefixCls}__subtitle`}>{subTitle}</span>}
                     </div>
+                    {exted && (
+                        <div className={`${prefixCls}__hd__side`} onClick={moreClickHandle}>
+                            {exted}
+                        </div>
+                    )}
                     {more && (
                         <div className={`${prefixCls}__hd__side`} onClick={moreClickHandle}>
                             <Icon className="weui-icon-btn" icon="btn_more">
