@@ -99,6 +99,10 @@ $PickerCol: "weui-picker__col";
     z-index: 3;
 }
 
-.weui-picker {
+.#{$Picker} {
     width: 100%;
+
+    &.placeholder {
+        color: #cbcbcb;
+    }
 }

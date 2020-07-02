@@ -132,7 +132,7 @@ const Picker = React.forwardRef((props: PickerProps, ref: React.MutableRefObject
     }
 
     return (
-        <div className={classNames(prefixCls, className, { [`${prefixCls}__disabled`]: disabled })} style={style}>
+        <div className={classNames(prefixCls, className, { [`${prefixCls}__disabled`]: disabled, placeholder: placeholder === label })} style={style}>
             <div ref={ref} onClick={showHandle}>
                 {label}
                 {addon}

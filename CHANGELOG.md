@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.6.6 (Thu Jul 02 2020)
+
+-   `Picker`增加占位符样式
+
 ## 1.6.5 (Mon Jun 29 2020)
 
 -   `PreviewItem`增加点击事件
