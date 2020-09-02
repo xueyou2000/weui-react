@@ -1,9 +1,9 @@
 import classNames from "classnames";
-import React, { useRef } from "react";
+import React from "react";
 import { useControll } from "utils-hooks";
 import PickerCol from "./PickerCol";
 import "./style/index.scss";
-import { getPickerLabel, normalizedDate, PickerItem, PickerLabelOption, getValueByDefaul, getSaveValue } from "./utils";
+import { getPickerLabel, getSaveValue, getValueByDefaul, normalizedDate, PickerItem, PickerLabelOption } from "./utils";
 
 export interface PickerPanelProps extends PickerLabelOption {
     /**
@@ -23,46 +23,36 @@ export interface PickerPanelProps extends PickerLabelOption {
      */
     data?: PickerItem[] | PickerItem[][];
     /**
-     * 选中值
-     */
-    value?: any[];
-    /**
-     * 默认选中值
-     */
-    defaultValue?: any[];
-    /**
-     * 改变值
-     */
-    onChange?: (value: any[], label: string) => void;
-    /**
      * 列数
      */
     cols?: number;
     /**
-     * 默认可视值
+     * 选择器面板可视值(每次滑动都更改, 只有确定时才外部才会设置正在的值, 并通道到可视值, 取消时也同步撤销可视值)
      */
     visibleValue?: any[];
     /**
-     * 当前可视值
+     * 默认选择器面板可视值
      */
-    onVisibleValue?: (val: any, i: number) => void;
+    defaultVisibleValue?: any[];
+    /**
+     * 改变值
+     */
+    visibleValueChange?: (value: any[], label: string) => void;
 }
 
 /**
  * Picker面板
  */
 function PickerPanel(props: PickerPanelProps) {
-    const { prefixCls = "weui-picker-panel", className, style, data = [], cols = 1, cascade = false, singleLabel = false, separator = "/", labelValue = false, onChange, visibleValue, onVisibleValue } = props;
-    const [value, setValue, isControll] = useControll<any[]>(props, "value", "defaultValue");
-    const saveVals = getSaveValue(value, cols, visibleValue);
+    const { prefixCls = "weui-picker-panel", className, style, data = [], cols = 1, cascade = false, singleLabel = false, separator = "/", labelValue = false, visibleValueChange } = props;
+    const [value, setValue] = useControll<any[]>(props, "visibleValue", "defaultVisibleValue");
+    const saveVals = getSaveValue(value, cols);
     let _data = normalizedDate(data, saveVals, cascade);
 
     function changeValue(val: any[]) {
-        if (!isControll) {
-            setValue(val);
-        }
-        if (onChange) {
-            onChange(val, getPickerLabel(val, data, { singleLabel, separator, labelValue, cascade }));
+        setValue(val);
+        if (visibleValueChange) {
+            visibleValueChange(val, getPickerLabel(val, data, { singleLabel, separator, labelValue, cascade }));
         }
     }
 
@@ -80,6 +70,7 @@ function PickerPanel(props: PickerPanelProps) {
             for (let i = 0; i < cols; ++i) {
                 if (i < index) {
                     // 之前的, 为空的默认, 存在值则不进行设置
+                    // console.log('设置此列之前的值', children[i]);
                     vals[i] = saveVals[i] === undefined || saveVals[i] === null ? children[i].value : saveVals[i];
                 } else if (i === index) {
                     vals[i] = val;
@@ -91,7 +82,7 @@ function PickerPanel(props: PickerPanelProps) {
             }
             changeValue(vals);
         } else {
-            changeValue(saveVals.map((x, i) => (i === index ? val : getValueByDefaul(x, index, _data))));
+            changeValue(saveVals.map((x, i) => (i === index ? val : getValueByDefaul(saveVals[i], i, _data))));
         }
     }
 
@@ -102,7 +93,7 @@ function PickerPanel(props: PickerPanelProps) {
         let groups = [];
 
         for (let i = 0; i < _data.length; ++i) {
-            groups.push(<PickerCol key={i} index={i} data={_data[i]} value={saveVals[i]} onChange={pickerColChangeHandle} onVisibleValue={onVisibleValue} />);
+            groups.push(<PickerCol key={i} index={i} data={_data[i]} value={saveVals[i]} onChange={pickerColChangeHandle} />);
         }
 
         return groups;

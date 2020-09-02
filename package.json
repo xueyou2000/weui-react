@@ -1,6 +1,6 @@
 {
     "name": "weui-react-v2",
-    "version": "1.6.6",
+    "version": "1.6.7",
     "description": "weui的react实现",
     "main": "es/index.js",
     "types": "es/index.d.ts",
@@ -38,7 +38,7 @@
     ],
     "dependencies": {
         "classnames": "^2.2.6",
-        "utils-dom": "^0.0.70",
+        "utils-dom": "^0.0.71",
         "utils-hooks": "^0.0.75",
         "xy-badge": "^0.1.0",
         "xy-form": "^0.7.0",

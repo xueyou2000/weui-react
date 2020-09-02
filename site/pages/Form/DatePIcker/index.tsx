@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 import { Button, DatePicker, Form, FormItem, ListGroup, PopupDatePicker } from "weui-react";
+import { decreaseDate } from "utils-dom";
+
+function getYearMonthDay(d?: Date) {
+    const today = d || new Date();
+    return [today.getFullYear(), today.getMonth() + 1, today.getDate()];
+}
 
 function DatePickerDemo({ history }: RouteComponentProps) {
+    const [date, setDate] = useState(getYearMonthDay(decreaseDate(new Date())));
+    const [startDate, setStartDate] = useState(getYearMonthDay(decreaseDate(new Date())));
+
     function change(v: any) {
         console.log("onchange", v);
     }
@@ -10,8 +19,9 @@ function DatePickerDemo({ history }: RouteComponentProps) {
     function show() {
         PopupDatePicker({
             title: "选择日期",
-            defaultValue: [2020, 6, 29],
-            onConfirm: (vals) => console.log("选择", vals),
+            value: startDate,
+            end: new Date().getFullYear(),
+            onConfirm: setStartDate,
         });
     }
 
@@ -24,9 +34,26 @@ function DatePickerDemo({ history }: RouteComponentProps) {
                 </Button>
             }
         >
+            <Button
+                type="primary"
+                onClick={() => {
+                    setDate([2020, 5, 14]);
+                }}
+            >
+                主动设置值
+            </Button>
             <ListGroup>
-                <FormItem defaultValue={[2020, 1, 2]} prop="a" label="日期选择" arrow={true}>
-                    <DatePicker title="选择日期" placeholder="请选择日期" onConfirm={(vals, label) => console.log("onConfirm ", vals, label)} onChange={change} />
+                <FormItem label="日期选择" arrow={true}>
+                    <DatePicker
+                        value={date}
+                        title="选择日期"
+                        placeholder="请选择日期"
+                        onConfirm={(vals, label) => {
+                            console.log("onConfirm ", vals, label);
+                            setDate(vals);
+                        }}
+                        onChange={change}
+                    />
                 </FormItem>
 
                 <Button onClick={show}>js弹出</Button>

@@ -108,43 +108,43 @@ const pickerDataB: PickerItem[][] = [
     [
         {
             label: "飞机票",
-            value: 100,
+            value: "飞机票",
         },
         {
             label: "火车票",
-            value: 101,
+            value: "火车票",
             disabled: true,
         },
         {
             label: "的士票",
-            value: 102,
+            value: "的士票",
         },
         {
             label: "打印票",
-            value: 103,
+            value: "打印票",
         },
     ],
     [
         {
             label: "住宿费",
-            value: 200,
+            value: "住宿费",
         },
         {
             label: "礼品费",
-            value: 201,
+            value: "礼品费",
             disabled: true,
         },
         {
             label: "活动费",
-            value: 202,
+            value: "活动费",
         },
         {
             label: "通讯费",
-            value: 203,
+            value: "通讯费",
         },
         {
             label: "补助",
-            value: 204,
+            value: "补助",
         },
     ],
 ];
@@ -161,11 +161,11 @@ function PickerDemo() {
                     </React.Fragment>
                 }
             >
-                <FormItem defaultValue={[3]} prop="merchantType" label="单列Picker" arrow={true}>
+                <FormItem prop="merchantType" label="单列Picker" arrow={true}>
                     <Picker cols={1} placeholder="请选择票据类型" title="单列Picker" data={pickerDataA} />
                 </FormItem>
 
-                <FormItem defaultValue={[103, 204]} prop="merchantType2" label="双列数据" arrow={true}>
+                <FormItem defaultValue={["的士票", "活动费"]} prop="merchantType2" label="双列数据" arrow={true}>
                     <Picker cols={2} placeholder="请选择票据类型" title="双列数据" data={pickerDataB} />
                 </FormItem>
 

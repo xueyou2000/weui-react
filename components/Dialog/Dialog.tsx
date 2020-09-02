@@ -63,13 +63,15 @@ function Dialog(props: DialogProps) {
                     </div>
                 )}
                 <div className={`${prefixCls}__bd`}>{children}</div>
-                <div className={`${prefixCls}__ft`}>
-                    {footer.map((x, i) => (
-                        <a key={i} className={classNames(`${prefixCls}__btn`, { [`${prefixCls}__btn_default`]: i === 0 && footer.length > 1 })} onClick={() => clickHandle(i)}>
-                            {x}
-                        </a>
-                    ))}
-                </div>
+                {footer && (
+                    <div className={`${prefixCls}__ft`}>
+                        {footer.map((x, i) => (
+                            <a key={i} className={classNames(`${prefixCls}__btn`, { [`${prefixCls}__btn_default`]: i === 0 && footer.length > 1 })} onClick={() => clickHandle(i)}>
+                                {x}
+                            </a>
+                        ))}
+                    </div>
+                )}
             </div>
         </Popup>
     );

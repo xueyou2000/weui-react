@@ -9104,10 +9104,10 @@ utila@^0.4.0, utila@~0.4:
   resolved "https://registry.npm.taobao.org/utila/download/utila-0.4.0.tgz#8a16a05d445657a3aea5eecc5b12a4fa5379772c"
   integrity sha1-ihagXURWV6Oupe7MWxKk+lN5dyw=
 
-utils-dom@^0.0.70:
-  version "0.0.70"
-  resolved "https://registry.npm.taobao.org/utils-dom/download/utils-dom-0.0.70.tgz#0c2a8a9d3224baa9f008eccecc35645ed431ffd5"
-  integrity sha1-DCqKnTIkuqnwCOzOzDVkXtQx/9U=
+utils-dom@^0.0.71:
+  version "0.0.71"
+  resolved "https://registry.npm.taobao.org/utils-dom/download/utils-dom-0.0.71.tgz#cef5da33af1b1ed62f7b2a1efe1f7d9fd2d7e936"
+  integrity sha1-zvXaM68bHtYveyoe/h99n9LX6TY=
 
 utils-hooks@^0.0.71:
   version "0.0.71"

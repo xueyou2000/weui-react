@@ -61,7 +61,7 @@ export function getSaveValue(val: any[], cols: number, visibleValue?: any[]) {
         return visibleValue ? visibleValue.slice(0, cols) : fillingArray(cols, null);
     } else if (val.length < cols) {
         // 补全val的长度到cols
-        for (let i = 0; i < cols; ++i) {
+        for (let i = val.length - 1; i < cols; ++i) {
             if (val[i] === undefined || val[i] === null) {
                 val[i] = visibleValue && visibleValue.length > i ? visibleValue[i] : null;
             }

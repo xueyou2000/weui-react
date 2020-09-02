@@ -11,6 +11,18 @@ import { getPickerLabel, getSaveValue, getValueByDefaul, normalizedDate } from "
 
 export interface PickerProps extends HalfScreenDialogProps, PickerPanelProps {
     /**
+     * 选中值
+     */
+    value?: any[];
+    /**
+     * 默认选中值
+     */
+    defaultValue?: any[];
+    /**
+     * 改变值
+     */
+    onChange?: (value: any[], label: string) => void;
+    /**
      * 确定按钮点击
      */
     onConfirm?: (value: any[], label: string) => void;
@@ -46,27 +58,21 @@ const Picker = React.forwardRef((props: PickerProps, ref: React.MutableRefObject
         disabled,
         addon,
         data,
-        value,
-        defaultValue,
         onChange,
         cols,
         singleLabel,
         separator,
         labelValue,
         cascade,
-        visibleValue,
-        onVisibleValue,
+        visibleValueChange,
         placeholder = getLocal().Picker.placeholder,
         PickerComponent = PickerPanel,
         getContainer,
         ...halfScreenProps
     } = props;
-    const pickerProps: PickerPanelProps = { data, cols, singleLabel, separator, labelValue, cascade, visibleValue, onVisibleValue };
-    if ("value" in props) {
-        pickerProps.value = value;
-    } else {
-        pickerProps.defaultValue = defaultValue;
-    }
+    const pickerProps: PickerPanelProps = { data, cols, singleLabel, separator, labelValue, cascade };
+    const [value, setValue, isController] = useControll<any[]>(props, "value", "defaultValue");
+    const [visibleValue, setVisibleValue] = useState<any[]>(value || props.visibleValue);
 
     const lastPickerVals = useRef<any[]>(null);
     const lastPickerLabel = useRef<string>(null);
@@ -76,6 +82,18 @@ const Picker = React.forwardRef((props: PickerProps, ref: React.MutableRefObject
     useEffect(() => {
         setLabel(getPickerLabel(DefineDefaultValue(props, "value", "defaultValue"), data, { singleLabel, separator, labelValue, cascade }) || placeholder);
     }, [value, data]);
+
+    function changeValue(vals: any[], label?: string) {
+        if (!isController) {
+            setValue(vals);
+        }
+        if (onChange) {
+            onChange(vals, label);
+        }
+        if (onConfirm) {
+            onConfirm(vals, label);
+        }
+    }
 
     function changeVisible(show: boolean) {
         if (!isVisibleControll) {
@@ -89,14 +107,12 @@ const Picker = React.forwardRef((props: PickerProps, ref: React.MutableRefObject
     function changeHandle(vals: any[], label: string) {
         lastPickerVals.current = vals;
         lastPickerLabel.current = label;
-        setLabel(label);
-        if (onChange) {
-            onChange(vals, label);
-        }
+        setVisibleValue(vals);
     }
 
     function showHandle() {
         if (!disabled) {
+            setVisibleValue(value);
             changeVisible(true);
         }
     }
@@ -122,12 +138,7 @@ const Picker = React.forwardRef((props: PickerProps, ref: React.MutableRefObject
         }
 
         setLabel(label);
-        if (onConfirm) {
-            onConfirm(pickerVals, label);
-        }
-        if (onChange) {
-            onChange(pickerVals, label);
-        }
+        changeValue(pickerVals, label);
         return Promise.resolve();
     }
 
@@ -138,7 +149,7 @@ const Picker = React.forwardRef((props: PickerProps, ref: React.MutableRefObject
                 {addon}
             </div>
             <HalfScreenDialog {...halfScreenProps} visible={visible} onVisibleChange={changeVisible} footer={[<Button>{getLocal().commom.confirm}</Button>]} onClick={confirmHandle}>
-                <PickerComponent {...pickerProps} onChange={changeHandle} />
+                <PickerComponent {...pickerProps} visibleValue={visibleValue} visibleValueChange={changeHandle} />
             </HalfScreenDialog>
         </div>
     );
