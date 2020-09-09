@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Page from "site/components/Page";
 import { PickerPanel, Button, FormItem, Form, PickerItem, Picker } from "weui-react";
 import cityData from "./citys-data.json";
+import { useMount } from "utils-hooks";
 
 // 级联数据
 const pickerData: PickerItem[] = [
@@ -150,6 +151,17 @@ const pickerDataB: PickerItem[][] = [
 ];
 
 function PickerDemo() {
+    const [branchs, setBranchs] = useState([]);
+
+    useMount(() => {
+        setTimeout(() => {
+            setBranchs([
+                { label: "cfd时代财富中心", value: 36 },
+                { label: "cfd时代财富中心22", value: 38 },
+            ]);
+        }, 2000);
+    });
+
     return (
         <Page className="dialog-demo" title="Picker" introduce="选择器">
             <Form
@@ -161,6 +173,10 @@ function PickerDemo() {
                     </React.Fragment>
                 }
             >
+                <FormItem prop="outletId" label="动态数据源" arrow={true}>
+                    <Picker cols={1} placeholder="请选择" title="分润网点" data={branchs || []} />
+                </FormItem>
+
                 <FormItem prop="merchantType" label="单列Picker" arrow={true}>
                     <Picker cols={1} placeholder="请选择票据类型" title="单列Picker" data={pickerDataA} />
                 </FormItem>
@@ -171,7 +187,6 @@ function PickerDemo() {
 
                 <FormItem prop="merchantType3" label="级联数据" arrow={true}>
                     <Picker visibleValue={["2200", "2250", "2252"]} title="请选择" cascade={true} cols={3} data={cityData} onChange={(vals, label) => console.log("选中值", vals, "label", label)} />
-                    {/* <Picker cascade={true} cols={2} placeholder="请选择票据类型" title="级联数据" data={pickerData} /> */}
                 </FormItem>
             </Form>
         </Page>

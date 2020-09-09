@@ -1,6 +1,6 @@
 import classNames from "classnames";
-import React, { useState, useRef, useEffect } from "react";
-import { DefineDefaultValue, GetDrawerContainerFuc, useControll } from "utils-hooks";
+import React, { useEffect, useRef, useState } from "react";
+import { GetDrawerContainerFuc, useControll } from "utils-hooks";
 import Button from "../Button";
 import { HalfScreenDialog } from "../HalfScreenDialog";
 import { HalfScreenDialogProps } from "../HalfScreenDialog/HalfScreenDialog";
@@ -23,7 +23,7 @@ export interface PickerProps extends HalfScreenDialogProps, PickerPanelProps {
      */
     onChange?: (value: any[], label: string) => void;
     /**
-     * 确定按钮点击
+     * 改变值(语义化, 实际上与onChange一样)
      */
     onConfirm?: (value: any[], label: string) => void;
     /**
@@ -55,10 +55,10 @@ const Picker = React.forwardRef((props: PickerProps, ref: React.MutableRefObject
         className,
         style,
         onConfirm,
+        onChange,
         disabled,
         addon,
         data,
-        onChange,
         cols,
         singleLabel,
         separator,
@@ -70,17 +70,19 @@ const Picker = React.forwardRef((props: PickerProps, ref: React.MutableRefObject
         getContainer,
         ...halfScreenProps
     } = props;
-    const pickerProps: PickerPanelProps = { data, cols, singleLabel, separator, labelValue, cascade };
+    const pickerLabelOption = { singleLabel, separator, labelValue, cascade };
+    const pickerProps: PickerPanelProps = { data, cols, ...pickerLabelOption };
+    // 选中的值数组
     const [value, setValue, isController] = useControll<any[]>(props, "value", "defaultValue");
+    // 当前滑块实时可视值, 不是最终确定的值
     const [visibleValue, setVisibleValue] = useState<any[]>(value || props.visibleValue);
-
+    const [visible, setVisible, isVisibleControll] = useControll<boolean>(props, "visible", "defaultVisible");
+    const [label, setLabel] = useState<string>(getPickerLabel(getSaveValue(value, cols), data, pickerLabelOption) || placeholder);
     const lastPickerVals = useRef<any[]>(null);
     const lastPickerLabel = useRef<string>(null);
-    const [visible, setVisible, isVisibleControll] = useControll<boolean>(props, "visible", "defaultVisible");
-    const [label, setLabel] = useState<string>(getPickerLabel(DefineDefaultValue(props, "value", "defaultValue"), data, { singleLabel, separator, labelValue, cascade }) || placeholder);
 
     useEffect(() => {
-        setLabel(getPickerLabel(DefineDefaultValue(props, "value", "defaultValue"), data, { singleLabel, separator, labelValue, cascade }) || placeholder);
+        setLabel(getPickerLabel(getSaveValue(value, cols), data, pickerLabelOption) || placeholder);
     }, [value, data]);
 
     function changeValue(vals: any[], label?: string) {
@@ -104,17 +106,17 @@ const Picker = React.forwardRef((props: PickerProps, ref: React.MutableRefObject
         }
     }
 
-    function changeHandle(vals: any[], label: string) {
-        lastPickerVals.current = vals;
-        lastPickerLabel.current = label;
-        setVisibleValue(vals);
-    }
-
     function showHandle() {
         if (!disabled) {
             setVisibleValue(value);
             changeVisible(true);
         }
+    }
+
+    function changeHandle(vals: any[], label: string) {
+        lastPickerVals.current = vals;
+        lastPickerLabel.current = label;
+        setVisibleValue(vals);
     }
 
     function confirmHandle() {
@@ -126,7 +128,7 @@ const Picker = React.forwardRef((props: PickerProps, ref: React.MutableRefObject
             label = lastPickerLabel.current;
         } else {
             // 如果将空值, 取默认值.(视觉上选中的值)
-            const saveVals = getSaveValue(DefineDefaultValue(props, "value", "defaultValue"), cols, visibleValue);
+            const saveVals = getSaveValue(value, cols);
             let _data = normalizedDate(data, saveVals, cascade);
 
             if (cascade) {
@@ -134,7 +136,7 @@ const Picker = React.forwardRef((props: PickerProps, ref: React.MutableRefObject
             } else {
                 pickerVals = saveVals.map((x, i) => getValueByDefaul(x, i, _data));
             }
-            label = getPickerLabel(pickerVals, data, { singleLabel, separator, labelValue, cascade });
+            label = getPickerLabel(pickerVals, data, pickerLabelOption);
         }
 
         setLabel(label);
