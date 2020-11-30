@@ -1,0 +1,53 @@
+@import '../../style/themes/index.less';
+
+@textarea-prefix-cls: ~'@{prefix}-textarea';
+
+.@{textarea-prefix-cls} {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+
+  &-inner {
+    display: block;
+    border: 0;
+    resize: none;
+    background: transparent;
+    width: 100%;
+    color: inherit;
+    font-size: 32px;
+    line-height: inherit;
+    outline: 0;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    caret-color: @primary-color;
+    -webkit-appearance: none;
+    padding: 0;
+  }
+
+  &-counter {
+    color: rgba(0, 0, 0, 0.3);
+    text-align: right;
+    font-size: 28px;
+  }
+
+  &.disabled {
+    color: @disabled-color;
+  }
+}
+
+/** rest**/
+textarea {
+  // Firefox
+  &::-moz-placeholder {
+    // #bfbfbf
+    color: @placeholder-color;
+    opacity: 1; // Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526
+  }
+  // Internet Explorer 10+
+  &:-ms-input-placeholder {
+    color: @placeholder-color;
+  }
+  // Safari and Chrome
+  &::-webkit-input-placeholder {
+    color: @placeholder-color;
+  }
+}

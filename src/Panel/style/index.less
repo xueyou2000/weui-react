@@ -1,0 +1,206 @@
+@import '../../style/themes/index.less';
+
+@panel-prefix-cls: ~'@{prefix}-panel';
+@panel-item-prefix-cls: ~'@{prefix}-panel-item';
+@brief-prefix-cls: ~'@{prefix}-brief';
+
+.@{panel-prefix-cls} {
+  background-color: #ffffff;
+  margin-top: 20px;
+  position: relative;
+  overflow: hidden;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:before {
+    content: ' ';
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 2px;
+    border-top: 2px solid rgba(0, 0, 0, 0.1);
+    color: rgba(0, 0, 0, 0.1);
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+  }
+
+  &:after {
+    content: ' ';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 2px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+    color: rgba(0, 0, 0, 0.1);
+    -webkit-transform-origin: 0 100%;
+    transform-origin: 0 100%;
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+  }
+
+  &__hd {
+    padding: 32px 32px 26px;
+    color: rgba(0, 0, 0, 0.9);
+    font-size: 24px;
+    font-weight: 700;
+    position: relative;
+    user-select: none;
+    -webkit-user-select: none;
+
+    &:after {
+      content: ' ';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      height: 2px;
+      border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+      color: rgba(0, 0, 0, 0.1);
+      -webkit-transform-origin: 0 100%;
+      transform-origin: 0 100%;
+      -webkit-transform: scaleY(0.5);
+      transform: scaleY(0.5);
+      left: 30px;
+    }
+  }
+}
+
+.@{panel-item-prefix-cls} {
+  padding: 32px;
+  position: relative;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  color: inherit;
+  transition: 0.24s;
+
+  &:before {
+    content: ' ';
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 2px;
+    border-top: 2px solid rgba(0, 0, 0, 0.1);
+    color: rgba(0, 0, 0, 0.1);
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+    left: 32px;
+  }
+
+  &:first-child:before {
+    display: none;
+  }
+
+  &_arrow:active {
+    background-color: #ececec;
+  }
+
+  &_title {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 1.4;
+    color: rgba(0, 0, 0, 0.9);
+    width: auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+    word-wrap: break-word;
+    word-break: break-all;
+    margin: 0;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  &_desc {
+    user-select: none;
+    -webkit-user-select: none;
+    color: rgba(0, 0, 0, 0.3);
+    font-size: 24px;
+    line-height: 1.4;
+    padding-top: 8px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  &_info {
+    margin: 32px 0 0 0;
+    padding: 0 0 8px;
+    font-size: 26px;
+    color: #cecece;
+    line-height: 1em;
+    list-style: none;
+    overflow: hidden;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  &_thumb {
+    width: 100%;
+    max-height: 100%;
+    vertical-align: top;
+  }
+
+  &_ft {
+    padding-right: 44px;
+    position: relative;
+
+    &:after {
+      content: ' ';
+      width: 24px;
+      height: 48px;
+      -webkit-mask-position: 0 0;
+      mask-position: 0 0;
+      -webkit-mask-repeat: no-repeat;
+      mask-repeat: no-repeat;
+      -webkit-mask-size: 100%;
+      mask-size: 100%;
+      background-color: currentColor;
+      color: rgba(0, 0, 0, 0.3);
+      -webkit-mask-image: url(data:image/svg+xml,%3Csvg%20width%3D%2212%22%20height%3D%2224%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M2.454%206.58l1.06-1.06%205.78%205.779a.996.996%200%20010%201.413l-5.78%205.779-1.06-1.061%205.425-5.425-5.425-5.424z%22%20fill%3D%22%23B2B2B2%22%20fill-rule%3D%22evenodd%22%2F%3E%3C%2Fsvg%3E);
+      mask-image: url(data:image/svg+xml,%3Csvg%20width%3D%2212%22%20height%3D%2224%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M2.454%206.58l1.06-1.06%205.78%205.779a.996.996%200%20010%201.413l-5.78%205.779-1.06-1.061%205.425-5.425-5.425-5.424z%22%20fill%3D%22%23B2B2B2%22%20fill-rule%3D%22evenodd%22%2F%3E%3C%2Fsvg%3E);
+      position: absolute;
+      top: 50%;
+      right: 0;
+      margin-top: -24px;
+    }
+  }
+
+  &_compact {
+    display: flex;
+    align-items: center;
+
+    .@{panel-item-prefix-cls}_hd {
+      margin-right: 32px;
+      width: 120px;
+      height: 120px;
+      line-height: 120px;
+      text-align: center;
+    }
+
+    .@{panel-item-prefix-cls}_bd {
+      flex: 1;
+      min-width: 0;
+    }
+  }
+}
+
+.@{brief-prefix-cls} {
+  float: left;
+  padding-right: 1em;
+
+  &_divider {
+    padding-left: 1em;
+    border-left: 2px solid #cecece;
+  }
+}

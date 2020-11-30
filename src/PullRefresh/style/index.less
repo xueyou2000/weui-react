@@ -1,0 +1,68 @@
+@import '../../style/themes/index.less';
+
+@pull-refresh-prefix-cls: ~'@{prefix}-pull-refresh';
+
+.@{pull-refresh-prefix-cls} {
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+  // touch-action: pan-y;
+  // touch-action: none;
+
+  &-body {
+    position: relative;
+  }
+
+  &.action-pulling-enough {
+    .@{pull-refresh-prefix-cls}-head .arrow {
+      transform: rotate(180deg);
+    }
+  }
+
+  &-head {
+    position: absolute;
+    transform: translate3d(0px, -100%, 0px);
+    width: 100%;
+  }
+
+  &-head-default {
+    text-align: center;
+    font-size: 24px;
+    line-height: 1rem;
+    color: #7676a1;
+
+    .arrow {
+      transition: 0.3s;
+      margin-right: 10px;
+    }
+
+    .weui-loadmore-tips {
+      font-size: 24px;
+      color: #7676a1;
+    }
+
+    .refresh-complete {
+      text-align: center;
+      overflow: hidden;
+      border-radius: 8px;
+    }
+
+    .anticon-check-circle {
+      font-size: 1.3em;
+      vertical-align: sub;
+      margin-right: 10px;
+    }
+  }
+
+  &-footer-default {
+    text-align: center;
+    font-size: 24px;
+    line-height: 1rem;
+    color: #7676a1;
+
+    .weui-loadmore-tips {
+      font-size: 24px;
+      color: #7676a1;
+    }
+  }
+}

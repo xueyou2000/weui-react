@@ -1,27 +1,22 @@
 {
-    "compilerOptions": {
-        "baseUrl": "./",
-        "target": "es5",
-        "module": "esnext",
-        "declaration": false,
-        "skipLibCheck": true,
-        "sourceMap": false,
-        "jsx": "react",
-        "importHelpers": true,
-        "strict": false,
-        "lib": ["dom", "esnext"],
-        "noFallthroughCasesInSwitch": true,
-        "moduleResolution": "node",
-        "resolveJsonModule": true,
-        "allowSyntheticDefaultImports": true,
-        "esModuleInterop": true,
-        "forceConsistentCasingInFileNames": true,
-        "experimentalDecorators": true,
-        "emitDecoratorMetadata": true,
-        "paths": {
-            "@/*": ["components/*"],
-            "site/*": ["site/*"],
-            "weui-react": ["components/index"]
-        }
-    }
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "jsx": "react",
+    "esModuleInterop": true,
+    "sourceMap": true,
+    "baseUrl": "./",
+    "strict": true,
+    "resolveJsonModule": true,
+    "paths": {
+      "@/*": ["src/*"],
+      "@@/*": ["src/.umi/*"],
+      "weui-react-v2": ["src/index.ts"],
+      "weui-react-v2/*": ["src/*"]
+    },
+    "allowSyntheticDefaultImports": true
+  },
+  "exclude": ["node_modules", "lib", "es", "dist", "typings", "**/__test__", "test"]
 }

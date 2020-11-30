@@ -1,0 +1,182 @@
+@import '../../style/themes/index.less';
+@import './mixin.less';
+
+@btn-prefix-cls: ~'@{prefix}-btn';
+@btn-border-width: 2px;
+@btn-padding-UD: 12px;
+@btn-padding-LR: 40px;
+
+.@{btn-prefix-cls} {
+  font-feature-settings: 'liga', 'kern';
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  display: inline-block;
+  box-sizing: border-box;
+  padding: @btn-padding-UD @btn-padding-LR;
+  font-size: @text-size; // 24px
+  font-weight: @btn-font-weight; // 400
+  text-align: center;
+  border-radius: @btn-border-radius-base; // 8px
+
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  > span {
+    display: inline-block;
+  }
+
+  &-block {
+    padding: @btn-padding-UD + 5 0;
+    padding-right: 0;
+    width: 100%;
+    display: block;
+  }
+
+  &-block + &-block {
+    margin-top: 25px;
+  }
+
+  &-default {
+    .button-color(#000; @btn-default-bg; @btn-default-bg);
+
+    &:active {
+      background-color: @btn-default-active-bg;
+    }
+
+    .button-disabled();
+  }
+
+  &-primary {
+    .button-color(#fff; @btn-primary-bg; @btn-primary-bg);
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+
+    &:active {
+      background-color: darken(@btn-primary-bg, 10%);
+    }
+
+    .button-disabled();
+  }
+
+  &-dashed {
+    // border-color: #d9d9d9;
+    .button-color(@text-color; transparent; @btn-default-border);
+    border-style: dashed;
+    border-width: 1px;
+    padding: calc(@btn-padding-UD - @btn-border-width) @btn-padding-LR;
+
+    &:active {
+      border-color: @btn-primary-bg;
+      color: @btn-primary-bg;
+    }
+
+    .button-disabled();
+  }
+
+  &-text {
+    .button-color(@text-color; transparent; transparent);
+
+    &:active {
+      color: @text-color;
+      background: rgba(0, 0, 0, 0.028);
+      border-color: transparent;
+    }
+
+    .button-disabled();
+  }
+
+  &-link {
+    .button-color(@btn-primary-bg; transparent; transparent);
+
+    &:active {
+      color: darken(@btn-primary-bg, 10%);
+    }
+
+    .button-disabled();
+  }
+
+  &-dangerous {
+    .button-color(@error-color, @btn-default-bg, @error-color);
+
+    &:active {
+      .button-color(darken(@error-color, 20%), @btn-default-bg, darken(@error-color, 20%));
+    }
+
+    .button-disabled();
+  }
+
+  &-dangerous&-link,
+  &-dangerous&-text {
+    background-color: transparent;
+    &:active,
+    &:hover {
+      background-color: transparent;
+    }
+  }
+
+  &-size-large {
+    padding: 16px 48px;
+    font-weight: 700;
+    font-size: 32px;
+  }
+
+  &-size-default {
+    padding: @btn-padding-UD @btn-padding-LR;
+    font-size: @text-size; // 24px
+    font-weight: @btn-font-weight; // 400
+  }
+
+  &-size-small {
+    padding: 12px 32px;
+    font-weight: 500;
+    font-size: 24px;
+  }
+
+  &::before {
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    bottom: -1px;
+    left: -1px;
+    z-index: 1;
+    display: none;
+    background: #fff;
+    border-radius: inherit;
+    opacity: 0.35;
+    transition: opacity 0.2s;
+    content: '';
+    pointer-events: none;
+  }
+
+  &-loading {
+    position: relative;
+    &:not([disabled]) {
+      pointer-events: none;
+    }
+
+    &::before {
+      display: block;
+    }
+  }
+
+  & > &-loading-icon {
+    transition: all 0.3s @ease-in-out;
+
+    .anticon {
+      padding-right: 16px;
+    }
+
+    &:only-child {
+      .anticon {
+        padding-right: 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,174 @@
+@import '../../style/themes/index.less';
+
+@popup-prefix-cls: ~'@{prefix}-popup';
+
+.@{popup-prefix-cls} {
+  &&-open {
+    .@{popup-prefix-cls}-mask {
+      display: block;
+      animation: fadeIn ease 0.3s forwards;
+    }
+  }
+
+  &&-state-exited,
+  &&-state-unmounted {
+    display: none;
+  }
+
+  &-mask {
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    user-select: none;
+    -webkit-overflow-scrolling: touch;
+    animation: fadeOut ease 0.3s forwards;
+    overflow: hidden;
+
+    &&.hidden-mask {
+      display: none !important;
+    }
+  }
+
+  &-content {
+    position: relative;
+    z-index: 1001;
+  }
+}
+
+/** 渐入渐出动画 **/
+.fade {
+  display: flex;
+  animation: fadeOut ease 0.3s forwards;
+
+  &.fade-open {
+    display: flex;
+    animation: fadeIn ease 0.3s forwards;
+  }
+  &.fade-state-unmounted {
+    display: none;
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/** 渐入渐出动画并缩放 **/
+.fade-scale {
+  display: flex;
+  animation: fadeScaleOut ease 0.3s forwards;
+
+  &.fade-scale-open {
+    display: flex;
+    animation: fadeScaleIn ease 0.3s forwards;
+  }
+  &.fade-scale-state-unmounted {
+    display: none;
+  }
+}
+@keyframes fadeScaleIn {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes fadeScaleOut {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+
+/** 底部拉出动画 **/
+.drill {
+  display: block;
+  animation: drillOut ease 0.3s forwards;
+
+  &.drill-open {
+    display: block;
+    animation: drillIn ease 0.3s forwards;
+  }
+  &.drill-state-unmounted {
+    display: none;
+  }
+}
+@keyframes drillIn {
+  0% {
+    display: block;
+    opacity: 0;
+    transform: translate(0, 100%);
+  }
+  100% {
+    display: block;
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+@keyframes drillOut {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(0, 100%);
+  }
+}
+
+/** 顶部拉出动画 **/
+.drillUp {
+  display: block;
+  animation: drillUpOut ease 0.3s forwards;
+
+  &.drillUp-open {
+    display: block;
+    animation: drillUpIn ease 0.3s forwards;
+  }
+  &.drillUp-state-unmounted {
+    display: none;
+  }
+}
+@keyframes drillUpIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-120%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes drillUpOut {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-120%);
+  }
+}

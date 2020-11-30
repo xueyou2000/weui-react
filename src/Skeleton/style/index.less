@@ -1,0 +1,22 @@
+@import '../../style/themes/index.less';
+
+@stripe-prefix-cls: ~'@{prefix}-stripe';
+
+.@{stripe-prefix-cls} {
+  height: 32px;
+  margin: 8px 0;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #f2f2f2 25%, #e6e6e6 37%, #f2f2f2 63%);
+  animation: stripe-loading 1.4s ease infinite;
+  background-size: 400% 100%;
+}
+
+@keyframes stripe-loading {
+  0% {
+    background-position: 100% 50%;
+  }
+
+  to {
+    background-position: 0 50%;
+  }
+}

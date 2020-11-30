@@ -17,7 +17,9 @@
 
 # weui-react-v2
 
-`weui`的`React`实现, 用于微信公众号页面, 包含很多常用组件。[在线例子](https://xueyou2000.github.io/weui-react/site-dest)
+`weui`的`React`实现, 快速编写移动端页面, 包含很多常用组件。[在线例子](http://xueyou2000.gitee.io/weui-react-v2)
+
+基于`umi-hd`做高清适应，将`px`编译成`rem`运行，设计稿是 750px
 
 ## 安装
 
@@ -28,14 +30,24 @@ yarn add weui-react-v2
 
 ## 开发
 
-```sh
-yarn run site-dev
+```bash
+yarn run start
 ```
 
-## 测试
+## 编译文档
 
+> Tips: 由于 `dumi`有点小 bug, 打包会丢失样式， 是`package.json`中`sideEffects`引起的，所以编译文档请先把这一行删除
+
+[see issues](https://github.com/umijs/dumi/issues/225)
+
+```bash
+yarn run docs:build
 ```
-yarn run test
+
+## 编译库
+
+```bash
+$ yarn run build
 ```
 
 ## 开源许可

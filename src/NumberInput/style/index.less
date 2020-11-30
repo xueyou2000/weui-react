@@ -1,0 +1,51 @@
+@import '../../style/themes/index.less';
+
+@number-input-prefix-cls: ~'@{prefix}-number-input';
+
+.@{number-input-prefix-cls} {
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  &-control {
+    flex-shrink: 0;
+    text-align: center;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    color: #000;
+    display: inline-block;
+    box-sizing: content-box;
+    font-size: 30px;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+
+    &:active {
+      background-color: #ddd;
+    }
+
+    &.disabled {
+      color: @disabled-color;
+      background-color: @disabled-bg;
+      border-color: @disabled-border-color;
+    }
+  }
+
+  .control-down {
+    margin-right: 10px;
+  }
+  .control-up {
+    margin-left: 10px;
+  }
+
+  &-show-control {
+    .weui-input-inner {
+      text-align: center;
+    }
+    .weui-input-clear {
+      display: none;
+    }
+  }
+}
